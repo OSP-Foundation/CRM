@@ -5,7 +5,23 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "white": "#fff",
+        "transparent": "transparent",
+        "primary-bg": "var(--primary-bg)",
+        "primary-black": "var(--primary-black)",
+        "primary-blue": "var(--primary-blue)",
+        "primary-grey": "var(--primary-grey)",
+        "secondary-black": "var(--secondary-black)",
+        "light-blue": "var(--light-blue)",
+        "primary-border": "var(--primary-border)",
+        "pure-black": "var(--pure-black)"
+      },
+      maxWidth: {
+        "limit": "var(--w-limit)"
+      }
+    },
   },
   plugins: [],
 }

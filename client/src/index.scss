@@ -1,4 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    // colors
+    --primary-bg: #f9fafc;
+    --primary-black: #333;
+    --secondary-black: #666;
+    --primary-blue: #2377fc;
+    --light-blue: rgb(230, 239, 255);
+    --primary-grey: #bfc2c4;
+    --primary-border: #e4e4e4;
+    --pure-black: #000;
+
+    // for width
+    --w-limit: 80rem;
+}
+
+* {
+    // for remove on click highlight color
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: var(--primary-bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+    word-wrap: break-word !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+input,
+textarea,
+a,
+button {
+    outline: none !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+// for limiting lines
+@mixin LimitLine($lines: 2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    /* number of lines to show */
+    line-clamp: $lines;
+    -webkit-box-orient: vertical;
+}
+
+// for limiting line break to one
+.single-line {
+    @include LimitLine($lines: 1)
+}
+
+div#include-sidebar {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: var(--w-limit);
+    width: 100%;
+    margin: 0 auto;
+
+    @media screen and (width >=768px) {
+        padding-left: calc(14rem + 2rem); // sidebar width + 2rem
+        padding-right: 2rem;
+    }
+}

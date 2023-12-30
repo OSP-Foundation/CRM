@@ -1,11 +1,19 @@
-import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import { ProtectedRoute } from './utils'
+import { Home } from './views'
 import './App.scss'
 
 function App() {
   return (
-    <section>
-      <h1 className='text-2xl font-bold text-blue-400'>CRM</h1>
-    </section>
+    <Routes>
+      <Route element={<ProtectedRoute isAuth />}>
+        <Route path='/' element={<Home />} />
+      </Route>
+
+      <Route element={<ProtectedRoute />}>
+        <Route path='/login' element={"HI"} />
+      </Route>
+    </Routes>
   )
 }
 
