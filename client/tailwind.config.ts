@@ -20,7 +20,10 @@ export default {
       },
       maxWidth: {
         "limit": "var(--w-limit)"
-      }
+      },
+      boxShadow: {
+        "primary-box-shadow": "var(--primary-box-shadow)"
+      },
     },
   },
   plugins: [],

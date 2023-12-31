@@ -37,7 +37,7 @@ const SideBar = () => {
                 </button>
 
                 <button
-                    className='border border-primary-border ml-auto aspect-square bg-white p-1 rounded-full shadow-primary-box-shadow easy-in-out duration-500 hover:border-primary-blue'
+                    className='border border-primary-border ml-auto aspect-square bg-white p-1 rounded-full easy-in-out duration-500 hover:border-primary-blue'
                 >
                     <Logout
                         width='1.2rem'
@@ -48,7 +48,7 @@ const SideBar = () => {
 
                 <button
                     id='open-dropdown'
-                    className='w-10 h-10 shadow-primary-box-shadow bg-orange-200 rounded-full text-sm uppercase font-bold text-red-500 easy-in-out duration-500 hover:bg-orange-300'
+                    className='w-10 h-10 bg-orange-200 rounded-full text-sm uppercase font-bold text-red-500 easy-in-out duration-500 hover:bg-orange-300'
                 >
                     A
                 </button>
