@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import { ProtectedRoute } from './utils'
-import { Home } from './views'
+import { Customer, Home } from './views'
 import './App.scss'
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
     <Routes>
       <Route element={<ProtectedRoute isAuth />}>
         <Route path='/' element={<Home />} />
+        <Route path='/customer' element={<Customer />} />
       </Route>
 
       <Route element={<ProtectedRoute />}>
