@@ -12,6 +12,7 @@ export default {
         "primary-bg": "var(--primary-bg)",
         "primary-black": "var(--primary-black)",
         "primary-blue": "var(--primary-blue)",
+        "secondary-blue": "var(--secondary-blue)",
         "primary-grey": "var(--primary-grey)",
         "secondary-black": "var(--secondary-black)",
         "light-blue": "var(--light-blue)",
