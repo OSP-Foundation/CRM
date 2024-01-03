@@ -54,8 +54,8 @@ div#sidebar {
 
         overflow-y: auto;
         overflow-x: hidden;
-        scrollbar-width: 5px;
-        scrollbar-color: var(--primary-border) transparent;
+        scrollbar-width: 5px !important;
+        scrollbar-color: var(--primary-border) transparent !important;
 
         &::-webkit-scrollbar {
             width: 5px;

@@ -10,6 +10,7 @@
     --primary-black: #333;
     --secondary-black: #666;
     --primary-blue: #2377fc;
+    --secondary-blue: #1d4ed8;
     --light-blue: rgb(230, 239, 255);
     --primary-grey: #bfc2c4;
     --primary-border: #e4e4e4;
@@ -56,6 +57,7 @@ a {
 input,
 textarea,
 a,
+select,
 button {
     outline: none !important;
 }
