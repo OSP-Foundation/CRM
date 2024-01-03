@@ -18,12 +18,12 @@ const Table = ({ children, className, titles }: table) => {
                     id='table-primary'
                     className={`w-full table-auto text-left ${className}`}
                 >
-                    <thead className='bg-primary-bg'>
+                    <thead>
                         <tr>
                             {
                                 titles?.map?.((v: string, k: number) => {
                                     return <th
-                                        className='p-4 capitalize text-sm text-primary-black font-semibold'
+                                        className='p-4 capitalize text-sm text-pure-black font-semibold'
                                         key={k}
                                     >
                                         {v}
@@ -42,7 +42,7 @@ const Table = ({ children, className, titles }: table) => {
 }
 
 const Td = ({ children, className }: common) => {
-    return <td className={`relative border-b border-primary-bg text-sm text-secondary-black px-4 py-3 ${className}`}>{children}</td>
+    return <td className={`relative border-b border-primary-bg text-sm text-primary-black px-4 py-3 ${className}`}>{children}</td>
 }
 
 export { Table, Td }
