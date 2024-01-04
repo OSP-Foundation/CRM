@@ -4,7 +4,7 @@ import { PieChart, LineChart, BarChart } from "../../components/chart";
 const Home = () => {
     return (
         <div className="flex flex-col gap-[1rem]">
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 ">
                 <Card className="text-center px-2 py-4 flex flex-col gap-2">
                     <h3 className="border-b font-semibold text-lg pb-2 text-pure-black capitalize">invoice</h3>
                     <div className="flex flex-row px-2 items-center justify-between">
@@ -53,12 +53,12 @@ const Home = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-[calc(70%-1rem)_30%] gap-[1rem]">
                 <div className="flex flex-col gap-[1rem]">
-                    <Card className="p-4">
+                    <Card className="p-4 min-h-[25rem]">
                         {/* <h2 className="bold text-xl font-semibold text-secondary-black">Oppourtunites by user</h2> */}
                         <LineChart />
                     </Card>
 
-                    <Card className="p-4">
+                    <Card className="p-4 min-h-[25rem]">
                         <BarChart />
                     </Card>
                 </div>

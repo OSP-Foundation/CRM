@@ -43,6 +43,7 @@ const data = {
 const BarChart = () => {
     return (<Bar options={{
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'top',

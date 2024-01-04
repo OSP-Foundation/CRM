@@ -33,6 +33,7 @@ const LineChart = () => {
   return <Line
     options={{
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           position: 'top' as const,
