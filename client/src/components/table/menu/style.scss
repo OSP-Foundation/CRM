@@ -1,0 +1,39 @@
+@import '../../../index.scss';
+
+div#table-outer-container table tbody td.td-menu {
+    position: static !important;
+
+    button#menu-open:focus~div#menu-display {
+        display: flex;
+    }
+
+    div#menu-display {
+        display: none;
+        flex-direction: column;
+
+        button {
+            border-bottom: 1px solid var(--primary-border);
+            font-size: small;
+            font-weight: 500;
+            text-transform: capitalize;
+            color: var(--primary-black);
+            padding: .5rem 1.5rem;
+            background: transparent;
+            text-align: left;
+            transition: all .5s ease-in-out;
+            -moz-transition: all .5s ease-in-out;
+
+            &:hover {
+                color: var(--primary-blue);
+            }
+
+            &:last-child {
+                border: none !important;
+            }
+        }
+
+        &:hover {
+            display: flex;
+        }
+    }
+}

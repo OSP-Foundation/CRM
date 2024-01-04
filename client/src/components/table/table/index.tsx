@@ -1,13 +1,10 @@
 import React from 'react'
 import './style.scss'
 
-interface common {
+interface table {
+    titles: Array<string>;
     children: React.ReactNode;
     className?: string;
-}
-
-interface table extends common {
-    titles: Array<string>;
 }
 
 const Table = ({ children, className, titles }: table) => {
@@ -41,8 +38,4 @@ const Table = ({ children, className, titles }: table) => {
     )
 }
 
-const Td = ({ children, className }: common) => {
-    return <td className={`relative border-b border-primary-bg text-sm text-primary-black px-4 py-3 ${className}`}>{children}</td>
-}
-
-export { Table, Td }
+export default Table

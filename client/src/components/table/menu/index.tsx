@@ -1,5 +1,5 @@
 import React from 'react'
-import { Td } from '.'
+import { Td } from '..'
 import './style.scss'
 
 interface props {

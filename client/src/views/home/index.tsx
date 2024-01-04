@@ -296,7 +296,6 @@ const Home = () => {
                 </Card>
             </div>
         </div>
-
     )
 }
 
