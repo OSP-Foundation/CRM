@@ -4,20 +4,6 @@ import { Line } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top' as const,
-    },
-    title: {
-      display: true,
-      text: 'Chart.js Line Chart',
-    },
-  },
-  bezierCurve: false,
-};
-
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
 // Generate your own data instead of using faker
@@ -45,7 +31,18 @@ export const data = {
 
 const LineChart = () => {
   return <Line
-    options={options}
+    options={{
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top' as const,
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Line Chart',
+        },
+      }
+    }}
     data={data} />
 };
 

@@ -25,14 +25,14 @@ const data = {
     datasets: [
         {
             label: 'Dataset 1',
-            data: labels.map((v: string, k: number) => Math.random() * k),
+            data: labels.map((v: string, k: number) => Math.random() * 2000),
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
             borderRadius: Number.MAX_VALUE,
             borderSkipped: false,
         },
         {
             label: 'Dataset 2',
-            data: labels.map((v: string, k: number) => Math.random() * k),
+            data: labels.map((v: string, k: number) => Math.random() * 1000),
             backgroundColor: 'rgba(53, 162, 235, 0.5)',
             borderRadius: Number.MAX_VALUE,
             borderSkipped: false
