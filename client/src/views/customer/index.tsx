@@ -1,8 +1,15 @@
-import { Card, Table, Td, TdMenu } from '../../components'
+import { useRef } from 'react'
+import { Card, DrawerForm, Table, Td, TdMenu } from '../../components'
 
 const Customer = () => {
+  const ref = useRef<any>(null)
+
   return (
     <div className='flex flex-col gap-7'>
+      <DrawerForm ref={ref}>
+        h
+      </DrawerForm>
+
       <Card className='p-[1rem] md:px-[2.5rem] flex flex-wrap gap-3 items-center'>
         <input
           type="text"
