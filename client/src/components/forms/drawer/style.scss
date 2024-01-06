@@ -1,37 +1,72 @@
 @import '../../../index.scss';
 
-div#drawer-form {
-    position: fixed;
-    display: block;
-    z-index: 1100;
-    background: transparent;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: calc(100% - 25rem) 25rem;
+@keyframes drawerIn {
+    from {
+        opacity: 0;
+        transform: translateY(50%);
+    }
 
-    div#blur-area {
-        display: block;
+    to {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes drawerOut {
+    from {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(50%);
+        opacity: 0;
+        display: none;
+    }
+}
+
+div#drawer-form {
+    display: none;
+    transform: translateY(50%);
+    opacity: 0;
+
+    &:is(.active) {
+        position: fixed;
+        z-index: 1100;
+        background: transparent;
+        top: 0;
+        right: 0;
         height: 100%;
         width: 100%;
-        background: transparent;
-        backdrop-filter: blur(5px);
-    }
-
-    div#content {
-        width: 100%;
-        background: white;
-        box-shadow: var(--primary-box-shadow);
-        padding: 1.5rem;
-    }
-
-    @media screen and (width <=25rem) {
-        grid-template-columns: auto;
+        display: grid;
+        grid-template-columns: calc(100% - 25rem) 25rem;
+        animation: drawerIn .3s ease-in-out forwards;
+        -moz-animation: drawerIn .3s ease-in-out forwards;
 
         div#blur-area {
-            display: none;
+            display: block;
+            height: 100%;
+            width: 100%;
+            background: rgba($color: $primary-grey, $alpha: .5);
+        }
+
+        div#content {
+            width: 100%;
+            background: white;
+            box-shadow: var(--primary-box-shadow);
+        }
+
+        @media screen and (width <=25rem) {
+            grid-template-columns: auto;
+
+            div#blur-area {
+                display: none;
+            }
+        }
+
+        &:is(.hide) {
+            animation: drawerOut .3s ease-in-out forwards !important;
+            -moz-animation: drawerOut .3s ease-in-out forwards !important;
         }
     }
 }

@@ -20,6 +20,7 @@ div#sidebar {
     background: transparent;
     display: block;
     animation: nav_sidebar .5s ease-in-out both;
+    -moz-animation: nav_sidebar .5s ease-in-out both;
 
     div.blur-area {
         display: none;
@@ -37,8 +38,11 @@ div#sidebar {
                 display: block;
                 height: 100%;
                 width: 100%;
-                background: transparent;
-                backdrop-filter: blur(5px);
+                background: rgba($color: $primary-grey, $alpha: .5);
+            }
+
+            div.items {
+                box-shadow: var(--primary-box-shadow);
             }
         }
     }
@@ -128,6 +132,7 @@ div#navbar {
         top: 3rem;
         display: none;
         animation: nav_sidebar .5s ease-in-out both;
+        -moz-animation: nav_sidebar .5s ease-in-out both;
 
         &:hover {
             display: block;
