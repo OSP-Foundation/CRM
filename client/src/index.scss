@@ -4,6 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
+$primary-grey: #bfc2c4;
+
 :root {
     // colors
     --primary-bg: #f9fafc;
@@ -12,7 +14,7 @@
     --primary-blue: #2377fc;
     --secondary-blue: #1d4ed8;
     --light-blue: rgb(230, 239, 255);
-    --primary-grey: #bfc2c4;
+    --primary-grey: #{$primary-grey};
     --primary-border: #e4e4e4;
     --pure-black: #000;
 

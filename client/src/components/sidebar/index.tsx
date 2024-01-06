@@ -37,7 +37,7 @@ const SideBar = () => {
                 </button>
 
                 <button
-                    className='border border-primary-border ml-auto aspect-square bg-white p-1 rounded-full easy-in-out duration-500 hover:border-primary-blue'
+                    className='border border-primary-border ml-auto aspect-square bg-white p-1 rounded-full ease-in-out duration-500 hover:border-primary-blue'
                 >
                     <Logout
                         width='1.2rem'
@@ -48,7 +48,7 @@ const SideBar = () => {
 
                 <button
                     id='open-dropdown'
-                    className='w-10 h-10 bg-orange-200 rounded-full text-sm uppercase font-bold text-red-500 easy-in-out duration-500 hover:bg-orange-300'
+                    className='w-10 h-10 bg-orange-200 rounded-full text-sm uppercase font-bold text-red-500 ease-in-out duration-500 hover:bg-orange-300'
                 >
                     A
                 </button>
@@ -71,7 +71,7 @@ const SideBar = () => {
 
                     <div className="border-b border-primary-border py-1">
                         <button
-                            className='w-full px-3 py-1 rounded capitalize flex flex-row gap-2 items-center text-sm font-medium text-primary-black bg-transparent easy-in-out duration-500 hover:bg-light-blue'
+                            className='w-full px-3 py-1 rounded capitalize flex flex-row gap-2 items-center text-sm font-medium text-primary-black bg-transparent ease-in-out duration-500 hover:bg-light-blue'
                         >
                             <Settings
                                 width='1rem'
@@ -84,7 +84,7 @@ const SideBar = () => {
 
                     <div className="py-1">
                         <button
-                            className='w-full py-1 px-3 rounded capitalize flex flex-row gap-2 items-center text-sm font-medium text-primary-black bg-transparent easy-in-out duration-500 hover:bg-light-blue'
+                            className='w-full py-1 px-3 rounded capitalize flex flex-row gap-2 items-center text-sm font-medium text-primary-black bg-transparent ease-in-out duration-500 hover:bg-light-blue'
                         >
                             <Logout
                                 width='1rem'

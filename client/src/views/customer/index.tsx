@@ -1,24 +1,44 @@
-import { useRef } from 'react'
-import { Card, DrawerForm, Table, Td, TdMenu } from '../../components'
+import { FormEvent, useRef } from 'react'
+import { Card, Input } from '../../components'
+import { DrawerForm, drawerRef } from '../../components/forms'
+import { Table, Td, TdMenu } from '../../components/table'
 
 const Customer = () => {
-  const ref = useRef<any>(null)
+  const ref = useRef<drawerRef>(null)
+
+  const onSubmit = (e: FormEvent) => {
+    e?.preventDefault?.()
+
+    console.log("Submit")
+  }
 
   return (
     <div className='flex flex-col gap-7'>
-      <DrawerForm ref={ref}>
-        h
+      <DrawerForm
+        ref={ref}
+        onSubmit={onSubmit}
+      >
+        <div>
+          <Input
+            className='w-full'
+            placeholder='Search Here'
+            name='people'
+            type='string'
+            label='People'
+          />
+        </div>
       </DrawerForm>
 
       <Card className='p-[1rem] md:px-[2.5rem] flex flex-wrap gap-3 items-center'>
-        <input
+        <Input
+          name='search'
           type="text"
           placeholder='Search'
-          className='mr-auto border border-primary-border bg-white text-sm text-primary-black rounded-md py-1 px-3 easy-in-out duration-500 focus:border-primary-blue'
+          className='mr-auto'
         />
 
         <select
-          className='capitalize appearance-none text-sm text-primary-black bg-white border border-primary-border rounded-md px-3 py-1 easy-in-out duration-500 hover:bg-primary-border'
+          className='capitalize appearance-none text-sm text-primary-black bg-white border border-primary-border rounded-md px-3 py-1 ease-in-out duration-500 hover:bg-primary-border'
         >
           <option
             className='capitalize text-sm text-primary-black'
@@ -28,7 +48,7 @@ const Customer = () => {
         </select>
 
         <button
-          className='bg-white border border-primary-border rounded-md px-5 py-1 text-sm capitalize text-primary-black easy-in-out duration-500 hover:bg-primary-border'
+          className='bg-white border border-primary-border rounded-md px-5 py-1 text-sm capitalize text-primary-black ease-in-out duration-500 hover:bg-primary-border'
         >
           refresh
         </button>
@@ -37,13 +57,14 @@ const Customer = () => {
       <Card className='p-[1rem] md:p-[2.5rem] flex flex-col gap-4'>
         <div className='flex flex-wrap items-center gap-3'>
           <button
-            className='mr-auto capitalize text-[50px] text-primary-black text-left easy-in-out duration-500 hover:text-primary-blue'
+            className='mr-auto capitalize text-[50px] text-primary-black text-left ease-in-out duration-500 hover:text-primary-blue'
           >
             &#x2190;
           </button>
 
           <button
-            className='border border-primary-blue bg-primary-blue rounded-md text-white px-3 py-1 text-sm capitalize easy-in-out duration-500 hover:bg-secondary-blue hover:border-secondary-blue'
+            onClick={() => ref?.current?.open?.()}
+            className='border border-primary-blue bg-primary-blue rounded-md text-white px-3 py-1 text-sm capitalize ease-in-out duration-500 hover:bg-secondary-blue hover:border-secondary-blue'
           >
             add new customer
           </button>
@@ -168,8 +189,8 @@ const Customer = () => {
 
         <div className='ml-auto flex flex-row gap-2 items-center'>
           <button className='px-3 p-1 text-sm text-primary-blue border border-primary-blue bg-white rounded-md font-medium'>1</button>
-          <button className='px-3 p-1 text-sm text-primary-black bg-white rounded-md font-medium easy-in-out duration-500 border border-white hover:bg-primary-border hover:border-primary-border'>2</button>
-          <button className='px-3 p-1 text-sm text-primary-black bg-white rounded-md font-medium easy-in-out duration-500 border border-white hover:bg-primary-border hover:border-primary-border'>3</button>
+          <button className='px-3 p-1 text-sm text-primary-black bg-white rounded-md font-medium ease-in-out duration-500 border border-white hover:bg-primary-border hover:border-primary-border'>2</button>
+          <button className='px-3 p-1 text-sm text-primary-black bg-white rounded-md font-medium ease-in-out duration-500 border border-white hover:bg-primary-border hover:border-primary-border'>3</button>
         </div>
       </Card>
     </div>

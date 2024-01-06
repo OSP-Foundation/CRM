@@ -1,5 +1,6 @@
-import { Card, Table, Td, TdMenu } from "../../components"
+import { Card } from "../../components"
 import { PieChart, LineChart, BarChart } from "../../components/chart";
+import { Table, Td, TdMenu } from "../../components/table";
 
 const Home = () => {
     return (
