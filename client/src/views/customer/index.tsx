@@ -1,5 +1,5 @@
 import { FormEvent, useRef } from 'react'
-import { Card, Input } from '../../components'
+import { Card, Input, Select } from '../../components'
 import { DrawerForm, drawerRef } from '../../components/forms'
 import { Table, Td, TdMenu } from '../../components/table'
 
@@ -19,17 +19,40 @@ const Customer = () => {
         onSubmit={onSubmit}
       >
         <div>
-          <Input
+          <Select
             className='w-full'
-            placeholder='Search Here'
-            name='people'
-            type='string'
+            label='Type'
+            placeholder='Select Type'
+            type='text'
+            required
+          >
+            <option value="People">People</option>
+            <option value="Company">Company</option>
+          </Select>
+        </div>
+
+        <div>
+          <Select
+            className='w-full'
             label='People'
-          />
+            placeholder='Search Here'
+            type='text'
+            required
+            onInput={(e) => {
+
+            }}
+            onSelect={(v) => {
+              console.log(v?.target?.value)
+              console.log(v?.target?.text)
+              // setState(v?.view)
+            }}
+          >
+            <option value="hello">Hai</option>
+          </Select>
         </div>
       </DrawerForm>
 
-      <Card className='p-[1rem] md:px-[2.5rem] flex flex-wrap gap-3 items-center'>
+      <Card className='container md:py-[1rem] flex flex-wrap gap-3 items-center'>
         <Input
           name='search'
           type="text"
@@ -54,7 +77,7 @@ const Customer = () => {
         </button>
       </Card>
 
-      <Card className='p-[1rem] md:p-[2.5rem] flex flex-col gap-4'>
+      <Card className='container flex flex-col gap-4'>
         <div className='flex flex-wrap items-center gap-3'>
           <button
             className='mr-auto capitalize text-[50px] text-primary-black text-left ease-in-out duration-500 hover:text-primary-blue'
@@ -64,7 +87,7 @@ const Customer = () => {
 
           <button
             onClick={() => ref?.current?.open?.()}
-            className='border border-primary-blue bg-primary-blue rounded-md text-white px-3 py-1 text-sm capitalize ease-in-out duration-500 hover:bg-secondary-blue hover:border-secondary-blue'
+            className='font-semibold border border-primary-blue bg-primary-blue rounded-md text-white px-3 py-1 text-sm capitalize ease-in-out duration-500 hover:bg-secondary-blue hover:border-secondary-blue'
           >
             add new customer
           </button>

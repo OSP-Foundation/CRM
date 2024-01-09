@@ -1,0 +1,94 @@
+@import '../../index.scss';
+
+@keyframes selectOpen {
+    from {
+        transform: translateY(30px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+div#custom-select {
+    input:focus~div.arrow {
+        transform: rotate(180deg);
+    }
+
+    input:focus~div#select-options {
+        display: flex;
+    }
+
+    div.arrow {
+        border: none;
+        border-bottom: 1px solid var(--primary-black);
+        border-right: 1px solid var(--primary-black);
+        width: 7px;
+        height: 7px;
+        rotate: 45deg;
+        transition: all .5s ease-in-out;
+        -moz-transition: all .5s ease-in-out;
+    }
+
+    div#select-options {
+        display: none;
+        flex-direction: column;
+        gap: .3rem;
+        width: 100%;
+        max-height: 40vh;
+        height: auto;
+        position: absolute;
+        top: 2rem;
+        left: 0;
+        background: white;
+        z-index: 100;
+        padding: .5rem;
+        border-radius: .5rem;
+        box-shadow: var(--primary-box-shadow);
+        transform: translateY(30px);
+        animation: selectOpen .3s ease-in-out forwards;
+        -moz-animation: selectOpen .3s ease-in-out forwards;
+
+        &:hover {
+            display: flex;
+        }
+
+        overflow: auto;
+
+        scrollbar-width: 5px !important;
+        scrollbar-color: var(--primary-border) transparent !important;
+
+        &::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: var(--primary-border);
+            border-radius: 999px;
+
+            &:hover {
+                background: var(--primary-grey);
+            }
+        }
+
+        option {
+            cursor: pointer;
+            width: 100%;
+            padding: .3rem .5rem;
+            border-radius: .3rem;
+            font-weight: 600;
+            background: var(--primary-bg);
+            transition: all .5s ease-in-out;
+            -moz-transition: all .5s ease-in-out;
+
+            &:hover {
+                background: var(--primary-border);
+            }
+        }
+    }
+}

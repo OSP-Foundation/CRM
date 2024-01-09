@@ -7,7 +7,7 @@ const Home = () => {
         <div className="flex flex-col gap-[1rem]">
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 ">
                 <Card className="text-center px-2 py-4 flex flex-col gap-2">
-                    <h3 className="border-b font-semibold text-lg pb-2 text-pure-black capitalize">invoice</h3>
+                    <h3 className="border-b font-semibold text-md pb-2 text-pure-black capitalize">invoice</h3>
                     <div className="flex flex-row px-2 items-center justify-between">
                         <p className="text-sm text-primary-black">This Month</p>
                         <button
@@ -18,7 +18,7 @@ const Home = () => {
                     </div>
                 </Card>
                 <Card className="text-center px-2 py-4 flex flex-col gap-2">
-                    <h3 className="border-b font-semibold text-lg pb-2 text-pure-black capitalize">quote</h3>
+                    <h3 className="border-b font-semibold text-md pb-2 text-pure-black capitalize">quote</h3>
                     <div className="flex flex-row px-2 items-center justify-between">
                         <p className="text-sm text-primary-black">This Month</p>
                         <button
@@ -29,7 +29,7 @@ const Home = () => {
                     </div>
                 </Card>
                 <Card className="text-center px-2 py-4 flex flex-col gap-2">
-                    <h3 className="border-b font-semibold text-lg pb-2 text-pure-black capitalize">payment</h3>
+                    <h3 className="border-b font-semibold text-md pb-2 text-pure-black capitalize">payment</h3>
                     <div className="flex flex-row px-2 items-center justify-between">
                         <p className="text-sm text-primary-black">This Month</p>
                         <button
@@ -40,7 +40,7 @@ const Home = () => {
                     </div>
                 </Card>
                 <Card className="text-center px-2 py-4 flex flex-col gap-2">
-                    <h3 className="border-b font-semibold text-lg pb-2 text-pure-black capitalize">due balance</h3>
+                    <h3 className="border-b font-semibold text-md pb-2 text-pure-black capitalize">due balance</h3>
                     <div className="flex flex-row px-2 items-center justify-between">
                         <p className="text-sm text-primary-black">This Month</p>
                         <button

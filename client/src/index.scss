@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -99,5 +99,14 @@ div#include-sidebar {
     @media screen and (width >=768px) {
         padding: 2.5rem;
         padding-left: calc(14rem + 2.5rem); // sidebar width (14rem) + 2.5rem
+    }
+}
+
+// responsive padding/container
+.container {
+    padding: 1rem;
+
+    @media screen and (width >=768px) {
+        padding: 2.5rem;
     }
 }

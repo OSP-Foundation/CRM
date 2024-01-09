@@ -20,7 +20,7 @@ const Table = ({ children, className, titles }: table) => {
                             {
                                 titles?.map?.((v: string, k: number) => {
                                     return <th
-                                        className='p-4 capitalize text-sm text-pure-black font-semibold'
+                                        className='p-4 capitalize text-sm text-pure-black font-bold'
                                         key={k}
                                     >
                                         {v}

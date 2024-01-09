@@ -25,7 +25,7 @@ const DrawerForm = forwardRef(({ children, onSubmit }: props, ref) => {
             modal?.current?.classList?.remove("hide")
             modal?.current?.classList?.add("active")
         }
-    }))
+    }), [])
 
     return (
         <div id='drawer-form' ref={modal}>
@@ -46,7 +46,7 @@ const DrawerForm = forwardRef(({ children, onSubmit }: props, ref) => {
                     >
                         {children}
                         <button
-                            className='mr-auto px-3 py-1 rounded-md text-sm capitalize text-white font-medium bg-primary-blue ease-in-out duration-500 hover:bg-secondary-blue'
+                            className='mr-auto px-3 py-1 rounded-md text-sm capitalize text-white font-semibold bg-primary-blue ease-in-out duration-500 hover:bg-secondary-blue'
                             type='submit'
                         >
                             submit
