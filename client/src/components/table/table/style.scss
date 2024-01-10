@@ -1,0 +1,39 @@
+@import '../../../index.scss';
+
+div#table-outer-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: 5px !important;
+    scrollbar-color: var(--primary-border) transparent !important;
+
+    &::-webkit-scrollbar {
+        height: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--primary-border);
+        border-radius: 9999px;
+
+        &:hover {
+            background: var(--primary-grey);
+        }
+    }
+
+    table {
+        thead th {
+            background: var(--primary-bg);
+
+            &:first-child {
+                border-top-left-radius: .5rem;
+            }
+
+            &:last-child {
+                border-top-right-radius: .5rem;
+            }
+        }
+    }
+}

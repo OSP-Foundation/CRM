@@ -20,6 +20,7 @@ div#sidebar {
     background: transparent;
     display: block;
     animation: nav_sidebar .5s ease-in-out both;
+    -moz-animation: nav_sidebar .5s ease-in-out both;
 
     div.blur-area {
         display: none;
@@ -37,8 +38,11 @@ div#sidebar {
                 display: block;
                 height: 100%;
                 width: 100%;
-                background: transparent;
-                backdrop-filter: blur(5px);
+                background: rgba($color: $primary-grey, $alpha: .5);
+            }
+
+            div.items {
+                box-shadow: var(--primary-box-shadow);
             }
         }
     }
@@ -54,8 +58,8 @@ div#sidebar {
 
         overflow-y: auto;
         overflow-x: hidden;
-        scrollbar-width: 5px;
-        scrollbar-color: var(--primary-border) transparent;
+        scrollbar-width: 5px !important;
+        scrollbar-color: var(--primary-border) transparent !important;
 
         &::-webkit-scrollbar {
             width: 5px;
@@ -82,7 +86,7 @@ div#sidebar {
             align-items: center;
             gap: .5rem;
             border-radius: .5rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: capitalize;
             color: var(--pure-black);
             transition: all .5s ease-in-out;
@@ -128,6 +132,7 @@ div#navbar {
         top: 3rem;
         display: none;
         animation: nav_sidebar .5s ease-in-out both;
+        -moz-animation: nav_sidebar .5s ease-in-out both;
 
         &:hover {
             display: block;

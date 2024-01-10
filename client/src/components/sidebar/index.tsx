@@ -1,4 +1,5 @@
 import { Fragment, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
     Doc, Expense, Graph, HeadPhone, Logout, Meter,
     Nav,
@@ -7,6 +8,8 @@ import {
 import './style.scss'
 
 const SideBar = () => {
+    const navigate = useNavigate();
+
     const ref = useRef<HTMLDivElement | null>(null)
 
     // for open sidebar
@@ -37,7 +40,7 @@ const SideBar = () => {
                 </button>
 
                 <button
-                    className='border border-primary-border ml-auto aspect-square bg-white p-1 rounded-full easy-in-out duration-500 hover:border-primary-blue'
+                    className='border border-primary-border ml-auto aspect-square bg-white p-1 rounded-full ease-in-out duration-500 hover:border-primary-blue'
                 >
                     <Logout
                         width='1.2rem'
@@ -48,7 +51,7 @@ const SideBar = () => {
 
                 <button
                     id='open-dropdown'
-                    className='w-10 h-10 bg-orange-200 rounded-full text-sm uppercase font-bold text-red-500 easy-in-out duration-500 hover:bg-orange-300'
+                    className='w-10 h-10 bg-orange-200 rounded-full text-sm uppercase font-bold text-red-500 ease-in-out duration-500 hover:bg-orange-300'
                 >
                     A
                 </button>
@@ -64,14 +67,14 @@ const SideBar = () => {
                             A
                         </button>
                         <div className="flex flex-col gap-1">
-                            <h1 className='text-sm font-semibold text-primary-black'>Anson Benny</h1>
+                            <h1 className='text-sm font-bold text-primary-black'>Anson Benny</h1>
                             <p className='text-xs lowercase text-primary-black'>crm1444@gmail.com</p>
                         </div>
                     </div>
 
                     <div className="border-b border-primary-border py-1">
                         <button
-                            className='w-full px-3 py-1 rounded capitalize flex flex-row gap-2 items-center text-sm font-medium text-primary-black bg-transparent easy-in-out duration-500 hover:bg-light-blue'
+                            className='w-full px-3 py-1 rounded capitalize flex flex-row gap-2 items-center text-sm font-medium text-primary-black bg-transparent ease-in-out duration-500 hover:bg-light-blue'
                         >
                             <Settings
                                 width='1rem'
@@ -84,7 +87,7 @@ const SideBar = () => {
 
                     <div className="py-1">
                         <button
-                            className='w-full py-1 px-3 rounded capitalize flex flex-row gap-2 items-center text-sm font-medium text-primary-black bg-transparent easy-in-out duration-500 hover:bg-light-blue'
+                            className='w-full py-1 px-3 rounded capitalize flex flex-row gap-2 items-center text-sm font-medium text-primary-black bg-transparent ease-in-out duration-500 hover:bg-light-blue'
                         >
                             <Logout
                                 width='1rem'
@@ -108,13 +111,14 @@ const SideBar = () => {
                         >
 
                         </div>
-                        <h1 className='text-2xl font-semibold text-primary-blue'>
+                        <h1 className='text-2xl font-black text-primary-blue'>
                             CR<span className='text-primary-black'>M</span>
                         </h1>
                     </div>
 
                     <button
                         className='active text-sm'
+                        onClick={() => navigate('/')}
                     >
                         <Meter
                             width='1rem'
@@ -127,6 +131,7 @@ const SideBar = () => {
 
                     <button
                         className='text-sm'
+                        onClick={() => navigate('/customer')}
                     >
                         <HeadPhone
                             width='1rem'
@@ -139,6 +144,7 @@ const SideBar = () => {
 
                     <button
                         className='text-sm'
+                        onClick={() => navigate('/people')}
                     >
                         <User
                             width='1rem'
@@ -151,6 +157,7 @@ const SideBar = () => {
 
                     <button
                         className='text-sm'
+                        onClick={() => navigate('/company')}
                     >
                         <Store
                             width='1rem'
@@ -163,6 +170,7 @@ const SideBar = () => {
 
                     <button
                         className='text-sm'
+                        onClick={() => navigate('/lead')}
                     >
                         <Graph
                             width='1rem'
@@ -175,6 +183,7 @@ const SideBar = () => {
 
                     <button
                         className='text-sm'
+                        onClick={() => navigate('/quote')}
                     >
                         <Quote
                             width='1rem'
@@ -187,6 +196,7 @@ const SideBar = () => {
 
                     <button
                         className='text-sm'
+                        onClick={() => navigate('/invoice')}
                     >
                         <Doc
                             width='1rem'

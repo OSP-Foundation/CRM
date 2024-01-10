@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+$primary-grey: #bfc2c4;
 
 :root {
     // colors
@@ -10,16 +12,17 @@
     --primary-black: #333;
     --secondary-black: #666;
     --primary-blue: #2377fc;
+    --secondary-blue: #1d4ed8;
     --light-blue: rgb(230, 239, 255);
-    --primary-grey: #bfc2c4;
+    --primary-grey: #{$primary-grey};
     --primary-border: #e4e4e4;
     --pure-black: #000;
 
     // for box shadow
-    --primary-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --primary-box-shadow: rgba(173, 173, 240, 0.2) 0px 7px 29px 0px;
 
     // for width
-    --w-limit: 80rem;
+    --w-limit: 85rem;
 }
 
 * {
@@ -56,6 +59,7 @@ a {
 input,
 textarea,
 a,
+select,
 button {
     outline: none !important;
 }
@@ -87,14 +91,22 @@ input[type=number] {
 }
 
 div#include-sidebar {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 1.5rem;
     max-width: var(--w-limit);
     width: 100%;
     margin: 0 auto;
 
     @media screen and (width >=768px) {
-        padding-left: calc(14rem + 2rem); // sidebar width + 2rem
-        padding-right: 2rem;
+        padding: 2.5rem;
+        padding-left: calc(14rem + 2.5rem); // sidebar width (14rem) + 2.5rem
+    }
+}
+
+// responsive padding/container
+.container {
+    padding: 1rem;
+
+    @media screen and (width >=768px) {
+        padding: 2.5rem;
     }
 }

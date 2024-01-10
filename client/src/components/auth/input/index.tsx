@@ -4,17 +4,17 @@ import { Eyeclosed, Eyeopened } from "../../../assets/svg/auth";
 interface props {
   label: string;
   name: string;
-  type: string;
+  type: "text" | "number" | "email" | "password";
 }
 
 const Inputbox = ({ label, name, type }: props) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
-    <div className="mb-4">
+    <div>
       <label
         htmlFor={name}
-        className="block mb-0 text-sm font-medium text-pure-black pointer-events-none select-none"
+        className="block capitalize mb-0 text-sm font-medium text-pure-black pointer-events-none select-none"
       >
         {label}
       </label>
@@ -24,7 +24,7 @@ const Inputbox = ({ label, name, type }: props) => {
           type={type === "password" && showPassword ? "text" : type}
           name={name}
           id={name}
-          className="bg-gray-50 border border-primary-border text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-1 transition duration-300 pl-3 hover:border-primary-black"
+          className="bg-gray-50 border border-primary-border text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full h-8 py-1 transition duration-300 px-2 hover:border-primary-black"
         />
 
         {type === "password" && (
