@@ -1,4 +1,4 @@
-@import '../../../index.scss';
+@import '../../index.scss';
 
 @keyframes drawerIn {
     from {
@@ -25,7 +25,7 @@
     }
 }
 
-div#drawer-form {
+div#drawer {
     display: none;
     transform: translateY(50%);
     opacity: 0;

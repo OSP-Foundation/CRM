@@ -1,7 +1,7 @@
 import { FormEvent, useRef } from 'react'
-import { Card, Input, Select } from '../../components'
-import { DrawerForm, drawerRef } from '../../components/forms'
+import { Card, Drawer, Input, Select, drawerRef } from '../../components'
 import { Table, Td, TdMenu } from '../../components/table'
+import { SimpleForm } from '../../components/forms'
 
 const Customer = () => {
   const ref = useRef<drawerRef>(null)
@@ -14,43 +14,46 @@ const Customer = () => {
 
   return (
     <div className='flex flex-col gap-7'>
-      <DrawerForm
+      <Drawer
         ref={ref}
-        onSubmit={onSubmit}
       >
-        <div>
-          <Select
-            className='w-full'
-            label='Type'
-            placeholder='Select Type'
-            type='text'
-            required
-          >
-            <option value="People">People</option>
-            <option value="Company">Company</option>
-          </Select>
-        </div>
+        <SimpleForm
+          onSubmit={onSubmit}
+        >
+          <div>
+            <Select
+              className='w-full'
+              label='Type'
+              placeholder='Select Type'
+              type='text'
+              required
+            >
+              <option value="People">People</option>
+              <option value="Company">Company</option>
+            </Select>
+          </div>
 
-        <div>
-          <Select
-            className='w-full'
-            label='People'
-            placeholder='Search Here'
-            type='text'
-            required
-            onInput={(e) => {
+          <div>
+            <Select
+              className='w-full'
+              label='People'
+              placeholder='Search Here'
+              type='text'
+              required
+              onInput={(e) => {
 
-            }}
-            onSelect={(v) => {
-              console.log(v?.target?.value)
-              console.log(v?.target?.text)
-              // setState(v?.view)
-            }}
-          >
-            <option value="hello">Hai</option>
-          </Select>
-        </div>
-      </DrawerForm>
+              }}
+              onSelect={(v) => {
+                console.log(v?.target?.value)
+                console.log(v?.target?.text)
+                // setState(v?.view)
+              }}
+            >
+              <option value="hello">Hai</option>
+            </Select>
+          </div>
+        </SimpleForm>
+      </Drawer>
 
       <Card className='container md:py-[1rem] flex flex-wrap gap-3 items-center'>
         <Input
