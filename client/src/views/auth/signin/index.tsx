@@ -40,7 +40,7 @@ const SignIn = () => {
       </div>
 
       <div className="text-center text-primary-black text-sm font-medium select-none py-4">
-        Haven't account?
+        Don't have an account yet?
         <span className="pl-1 font-base font-semibold hover:text-primary-blue duration-300 cursor-pointer">
           Sign up
         </span>

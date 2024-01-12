@@ -7,10 +7,13 @@ const Forgot = () => {
       subtitle="Please enter your details to forgot."
     >
       <Inputbox label={"Email"} type={"email"} name={"email"} />
-      <Inputbox label={"Password"} type={"password"} name={"password"} />
+      <Inputbox label={"New Password"} type={"password"} name={"password"} />
       <div className="flex flex-col gap-2 w-full">
-        <Inputbox label={"OTP"} type={"text"} name={"otp"} />
-        <button type="button" className="ml-auto text-xs text-primary-black">
+        <Inputbox label={"Verification code"} type={"text"} name={"otp"} />
+        <button
+          type="button"
+          className="ml-auto text-xs text-primary-black hover:text-primary-blue duration-300"
+        >
           Resend
         </button>
       </div>
@@ -31,7 +34,7 @@ const Forgot = () => {
 
       <div className="text-center text-primary-black text-sm font-medium select-none py-4">
         Remember password?
-        <span className="pl-1 font-base font-semibold hover:text-primary-blue duration-300 cursor-pointer">
+        <span className="pl-1 font-base font-bold hover:text-primary-blue duration-300 cursor-pointer">
           Sign in
         </span>
       </div>
