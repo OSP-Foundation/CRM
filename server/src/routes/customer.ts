@@ -10,6 +10,4 @@ const CheckLogged = (req: Request, res: Response, next: NextFunction) => {
     next()
 }
 
-router.get("/", CheckLogged, customer.getAll.bind(customer))
-
 export default router;
