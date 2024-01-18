@@ -15,8 +15,8 @@ export default ({ mode }) => {
         usePolling: true
       },
       proxy: {
-        '/api': {
-          target: process?.env?.BACK_END,
+        '/api/user': {
+          target: process?.env?.BACK_END_USER,
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),
         },

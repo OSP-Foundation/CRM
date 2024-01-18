@@ -4,7 +4,7 @@
 FROM node:20.10.0-alpine 
 
 # Sets the current working directory for subsequent instructions.
-WORKDIR /prod/client
+WORKDIR /prod/mail
 
 # copying package.json & package-lock.json to WORKDIR
 COPY ./package*.json ./
@@ -18,7 +18,7 @@ COPY ./ ./
 # building files
 RUN npm run build
 
-EXPOSE 4173
+EXPOSE 5002
 
 # executing command
-CMD [ "npm","run","preview" ]
+CMD [ "npm","start" ]

@@ -7,7 +7,6 @@ const SignIn = () => {
       title="Welcome! Let's get you started."
       subtitle="Please enter your details to sign in."
     >
-      <Inputbox label={"Name"} type={"text"} name={"name"} />
       <Inputbox label={"Email"} type={"email"} name={"email"} />
       <div className="flex flex-col gap-2 w-full">
         <Inputbox label={"Password"} type={"password"} name={"password"} />
