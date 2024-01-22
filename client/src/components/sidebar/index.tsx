@@ -5,10 +5,14 @@ import {
     Nav,
     Payment, Quote, Settings, Store, User
 } from '../../assets/svg'
+import { axios } from '../../lib'
+import { useSelector } from 'react-redux'
 import './style.scss'
 
 const SideBar = () => {
     const navigate = useNavigate();
+
+    const user = useSelector((state: any) => state?.user)
 
     const ref = useRef<HTMLDivElement | null>(null)
 
@@ -20,6 +24,18 @@ const SideBar = () => {
     // for close sidebar
     const CloseSideBar = () => {
         ref?.current?.classList?.remove("active")
+    }
+
+    const logout = async () => {
+        if (window.confirm("Do you want logout?")) {
+            try {
+                await axios.get("/user/logout")
+
+                navigate('/sign-in')
+            } catch (err: any) {
+                alert(err?.response?.data?.message || "Something Went Wrong")
+            }
+        }
     }
 
     return (
@@ -40,6 +56,8 @@ const SideBar = () => {
                 </button>
 
                 <button
+                    type='button'
+                    onClick={logout}
                     className='border border-primary-border ml-auto aspect-square bg-white p-1 rounded-full ease-in-out duration-500 hover:border-primary-blue'
                 >
                     <Logout
@@ -53,27 +71,29 @@ const SideBar = () => {
                     id='open-dropdown'
                     className='w-10 h-10 bg-orange-200 rounded-full text-sm uppercase font-bold text-red-500 ease-in-out duration-500 hover:bg-orange-300'
                 >
-                    A
+                    {user?.name?.[0]}
                 </button>
 
                 <div
                     id='dropdown'
-                    className='rounded-md bg-white p-1 shadow-primary-box-shadow'
+                    className='rounded-md bg-white p-1 shadow-primary-box-shadow max-w-xs w-full'
                 >
-                    <div className="flex flex-row items-center gap-3 p-3 border-b border-primary-border">
+                    <div className="grid grid-cols-[2.5rem_calc(100%-(2.5rem+1rem))] items-center gap-[1rem] p-3 border-b border-primary-border">
                         <button
-                            className='ml-auto w-10 h-10 bg-orange-200 rounded-full text-sm uppercase font-bold text-red-500'
+                            className='ml-auto w-[2.5rem] h-[2.5rem] bg-orange-200 rounded-full text-sm uppercase font-bold text-red-500'
                         >
-                            A
+                            {user?.name?.[0]}
                         </button>
                         <div className="flex flex-col gap-1">
-                            <h1 className='text-sm font-bold text-primary-black'>Anson Benny</h1>
-                            <p className='text-xs lowercase text-primary-black'>crm1444@gmail.com</p>
+                            <h1 className='text-sm font-bold text-primary-black'>{user?.name}</h1>
+                            <p className='text-xs lowercase text-primary-black'>{user?.email}</p>
                         </div>
                     </div>
 
                     <div className="border-b border-primary-border py-1">
                         <button
+                            type='button'
+                            onClick={() => navigate('/account')}
                             className='w-full px-3 py-1 rounded capitalize flex flex-row gap-2 items-center text-sm font-medium text-primary-black bg-transparent ease-in-out duration-500 hover:bg-light-blue'
                         >
                             <Settings
@@ -87,6 +107,8 @@ const SideBar = () => {
 
                     <div className="py-1">
                         <button
+                            type='button'
+                            onClick={logout}
                             className='w-full py-1 px-3 rounded capitalize flex flex-row gap-2 items-center text-sm font-medium text-primary-black bg-transparent ease-in-out duration-500 hover:bg-light-blue'
                         >
                             <Logout

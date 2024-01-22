@@ -1,4 +1,4 @@
-import { Fragment, useMemo } from "react";
+import { ChangeEvent, Fragment, useMemo } from "react";
 import './style.scss'
 
 interface props {
@@ -10,7 +10,7 @@ interface props {
     placeholder: string;
     required?: boolean;
     readOnly?: boolean;
-    onChange?: () => void;
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input = ({ className, label, ...other }: props) => {

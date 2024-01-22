@@ -1,7 +1,8 @@
 import { FormEvent, useRef } from 'react'
-import { Card, Drawer, Input, Select, drawerRef } from '../../components'
+import { ActionsArea, Card, Drawer, Input, Select, drawerRef } from '../../components'
 import { Table, Td, TdMenu } from '../../components/table'
 import { SimpleForm } from '../../components/forms'
+import { BlueBtn, WhiteBtn } from '../../components/buttons'
 
 const Customer = () => {
   const ref = useRef<drawerRef>(null)
@@ -73,28 +74,22 @@ const Customer = () => {
           </option>
         </select>
 
-        <button
-          className='bg-white border border-primary-border rounded-md px-5 py-1 text-sm capitalize text-primary-black ease-in-out duration-500 hover:bg-primary-border'
+        <WhiteBtn
+          type='button'
         >
           refresh
-        </button>
+        </WhiteBtn>
       </Card>
 
       <Card className='container flex flex-col gap-4'>
-        <div className='flex flex-wrap items-center gap-3'>
-          <button
-            className='mr-auto capitalize text-[50px] text-primary-black text-left ease-in-out duration-500 hover:text-primary-blue'
-          >
-            &#x2190;
-          </button>
-
-          <button
+        <ActionsArea>
+          <BlueBtn
+            type='button'
             onClick={() => ref?.current?.open?.()}
-            className='font-semibold border border-primary-blue bg-primary-blue rounded-md text-white px-3 py-1 text-sm capitalize ease-in-out duration-500 hover:bg-secondary-blue hover:border-secondary-blue'
           >
             add new customer
-          </button>
-        </div>
+          </BlueBtn>
+        </ActionsArea>
 
         <Table
           titles={['type', 'name', 'country', 'phone', 'email', '']}

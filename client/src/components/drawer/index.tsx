@@ -13,15 +13,28 @@ const Drawer = forwardRef(({ children }: props, ref) => {
 
     const modal = useRef<HTMLDivElement | null>(null)
 
+    const interval = useRef<NodeJS.Timeout | null>(null)
+
     // for closing modal
     const CloseModal = () => {
         modal?.current?.classList?.add("hide")
+
+        if (interval?.current) {
+            clearInterval(interval?.current)
+        }
+
+        interval.current = setTimeout(() => {
+            modal?.current?.classList?.remove("hide", "active")
+        }, 500)
     }
 
     // for control from parent component
     useImperativeHandle<unknown, drawerRef>(ref, () => ({
         open: () => {
-            modal?.current?.classList?.remove("hide")
+            if (interval?.current) {
+                clearInterval(interval?.current)
+            }
+
             modal?.current?.classList?.add("active")
         }
     }), [])

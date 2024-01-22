@@ -262,7 +262,7 @@ class Account {
                 const user = await this.repo.findByEmail(google)
 
                 if (user) {
-                    const token = Jwt.sign(
+                    const JwtToken = Jwt.sign(
                         {
                             _id: user?._id,
                         },
@@ -274,7 +274,7 @@ class Account {
 
                     res
                         .status(200)
-                        .cookie("token", token, {
+                        .cookie("token", JwtToken, {
                             httpOnly: true,
                             expires: new Date(Date.now() + this.expire),
                         })

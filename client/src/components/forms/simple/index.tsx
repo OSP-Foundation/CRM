@@ -1,4 +1,5 @@
 import React, { FormEvent } from 'react'
+import { BlueBtn } from '../../buttons'
 
 interface props {
     children: React.ReactNode,
@@ -12,12 +13,12 @@ const SimpleForm = ({ children, onSubmit }: props) => {
             className='flex flex-col gap-2'
         >
             {children}
-            <button
-                className='mr-auto px-3 py-1 rounded-md text-sm capitalize text-white font-semibold bg-primary-blue ease-in-out duration-500 hover:bg-secondary-blue'
+            <BlueBtn
                 type='submit'
+                className='mr-auto'
             >
                 submit
-            </button>
+            </BlueBtn>
         </form>
     )
 }

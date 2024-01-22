@@ -18,7 +18,7 @@ export default ({ mode }) => {
         '/api/user': {
           target: process?.env?.BACK_END_USER,
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
+          rewrite: (path) => path.replace(/^\/api\/user/, ''),
         },
       }
     }

@@ -21,14 +21,11 @@
     to {
         transform: translateY(50%);
         opacity: 0;
-        display: none;
     }
 }
 
 div#drawer {
     display: none;
-    transform: translateY(50%);
-    opacity: 0;
 
     &:is(.active) {
         position: fixed;
@@ -88,8 +85,8 @@ div#drawer {
         }
 
         &:is(.hide) {
-            animation: drawerOut .3s ease-in-out forwards !important;
-            -moz-animation: drawerOut .3s ease-in-out forwards !important;
+            animation: drawerOut .3s ease-in-out forwards;
+            -moz-animation: drawerOut .3s ease-in-out forwards;
         }
     }
 }

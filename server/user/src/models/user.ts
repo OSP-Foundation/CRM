@@ -18,8 +18,7 @@ const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
-    },
-    facebook: String
+    }
 })
 
 export default mongoose.model("User", userSchema)

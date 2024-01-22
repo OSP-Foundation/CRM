@@ -1,0 +1,55 @@
+@import '../../index.scss';
+
+@keyframes modalIn {
+    from {
+        transform: perspective(800px) rotateY(50deg) translateY(70px);
+        opacity: 1;
+    }
+
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+@keyframes modalOut {
+    from {
+        transform: none;
+        opacity: 1;
+    }
+
+    to {
+        transform: perspective(800px) rotateY(-50deg) translateY(70px);
+        opacity: 0;
+    }
+}
+
+div#modal {
+    display: none;
+
+    &:is(.active) {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgba($color: $primary-grey, $alpha: .5);
+        padding: 1.5rem;
+        display: flex;
+        z-index: 1100;
+        animation: modalIn .5s ease-in-out forwards;
+        -moz-animation: modalIn .5s ease-in-out forwards;
+
+        div.inner {
+            background: white;
+            height: auto;
+            margin: auto;
+            box-shadow: var(--primary-box-shadow);
+        }
+
+        &:is(.hide) {
+            animation: modalOut .5s ease-in-out forwards;
+            -moz-animation: modalOut .5s ease-in-out forwards;
+        }
+    }
+}
