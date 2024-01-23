@@ -77,46 +77,6 @@ div#sidebar {
                 background: var(--primary-grey);
             }
         }
-
-        button {
-            width: 100%;
-            padding: .7rem 1rem;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: .5rem;
-            border-radius: .5rem;
-            font-weight: 700;
-            text-transform: capitalize;
-            color: var(--pure-black);
-            transition: all .5s ease-in-out;
-            -moz-transition: all .5s ease-in-out;
-
-            .svg-fill {
-                fill: var(--pure-black);
-            }
-
-            .svg-stroke {
-                stroke: var(--pure-black);
-            }
-
-            &:is(.active) {
-                background: var(--light-blue);
-                color: var(--primary-blue);
-
-                .svg-fill {
-                    fill: var(--primary-blue);
-                }
-
-                .svg-stroke {
-                    stroke: var(--primary-blue);
-                }
-            }
-
-            &:not(.active):hover {
-                background: var(--primary-border);
-            }
-        }
     }
 }
 

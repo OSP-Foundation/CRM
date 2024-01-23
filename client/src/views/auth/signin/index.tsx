@@ -1,4 +1,4 @@
-import { Authlayout, Inputbox } from "../../../components/auth";
+import { Authlayout, Input } from "../../../components/auth";
 import { Google } from "../../../assets/svg/auth";
 import { axios } from "../../../lib";
 import { ChangeEvent, FormEvent, useState } from "react";
@@ -86,7 +86,7 @@ const SignIn = () => {
       error={conditions?.error}
       onSubmit={FormHandle}
     >
-      <Inputbox
+      <Input
         label={"Email"}
         type={"email"}
         name={"email"}
@@ -95,7 +95,7 @@ const SignIn = () => {
         onChange={InputHandle}
       />
       <div className="flex flex-col gap-2 w-full">
-        <Inputbox
+        <Input
           label={"Password"}
           type={"password"}
           name={"password"}

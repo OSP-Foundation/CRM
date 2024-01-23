@@ -1,10 +1,11 @@
 import { ChangeEvent, FormEvent, Fragment, useRef, useState } from 'react'
-import { ActionsArea, Card, Modal, modalRef } from '../../../components'
-import { Input } from '../../../components';
+import { Modal, PrimaryLayout, modalRef } from '../../../components'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { axios } from '../../../lib';
 import { BlueBtn, WhiteBtn } from '../../../components/buttons';
+import { Input } from '../../../components/auth';
+import { SimpleForm } from '../../../components/forms';
 
 const Account = () => {
     const ref = useRef<modalRef | null>(null);
@@ -14,7 +15,10 @@ const Account = () => {
         newPassword: string
     }>({ password: '', newPassword: '' })
 
-    const [submiting, setSubmiting] = useState<boolean>(false)
+    const [conditions, setConditions] = useState<{
+        submiting?: boolean,
+        error?: string
+    }>({})
 
     const navigate = useNavigate();
 
@@ -26,7 +30,7 @@ const Account = () => {
     }) => state?.user)
 
     const InputHandle = (e: ChangeEvent<HTMLInputElement>) => {
-        if (!submiting) {
+        if (!conditions?.submiting) {
             setForm((state: any) => ({
                 ...state,
                 [e?.target?.name]: e?.target?.value
@@ -37,7 +41,7 @@ const Account = () => {
     const FormHandle = async (e: FormEvent<HTMLFormElement>) => {
         e?.preventDefault?.()
 
-        setSubmiting(true)
+        setConditions({ submiting: true })
 
         try {
             await axios.put('/user/update-password', form)
@@ -48,9 +52,9 @@ const Account = () => {
 
             ref?.current?.close?.()
         } catch (err: any) {
-            alert(err?.response?.data?.message || "Something Went Wrong")
+            setConditions((state) => ({ ...state, error: err?.response?.data?.message || "Something Went Wrong" }))
         } finally {
-            setSubmiting(false)
+            setConditions((state) => ({ ...state, submiting: false }))
         }
     }
 
@@ -60,9 +64,10 @@ const Account = () => {
                 ref={ref}
                 className='w-full'
             >
-                <form
+                <SimpleForm
                     onSubmit={FormHandle}
-                    className='flex flex-col gap-2 w-full'
+                    className='w-full'
+                    {...conditions}
                 >
                     <Input
                         name='password'
@@ -81,37 +86,30 @@ const Account = () => {
                         onChange={InputHandle}
                         value={form?.newPassword}
                     />
-
-                    <BlueBtn
-                        className='mr-auto'
-                        type={submiting ? 'button' : 'submit'}
-                    >
-                        {submiting ? "wait..." : "submit"}
-                    </BlueBtn>
-                </form>
+                </SimpleForm>
             </Modal>
 
-            <Card
-                className='bg-white flex flex-col items-center gap-2 max-w-2xl w-full mx-auto container'
+            <PrimaryLayout
+                cardClass='max-w-xl mx-auto'
+                isFixedActions={false}
+                Actions={
+                    <>
+                        <BlueBtn
+                            type='button'
+                            onClick={() => navigate('/account/edit')}
+                        >
+                            edit
+                        </BlueBtn>
+
+                        <WhiteBtn
+                            type='button'
+                            onClick={() => ref?.current?.open?.()}
+                        >
+                            update password
+                        </WhiteBtn>
+                    </>
+                }
             >
-                <ActionsArea
-                    className='w-full'
-                >
-                    <BlueBtn
-                        type='button'
-                        onClick={() => navigate('/account/edit')}
-                    >
-                        edit
-                    </BlueBtn>
-
-                    <WhiteBtn
-                        type='button'
-                        onClick={() => ref?.current?.open?.()}
-                    >
-                        update password
-                    </WhiteBtn>
-                </ActionsArea>
-
                 <div className="grid grid-cols-[5rem_calc(100%-(5rem+2rem))] items-center gap-[2rem] mr-auto w-full">
                     <div className='capitalize flex items-center text-center justify-center p-3 bg-red-200 w-[5rem] h-[5rem] rounded-full text-3xl text-red-500 font-bold'>
                         {user?.name?.[0]}
@@ -127,7 +125,7 @@ const Account = () => {
                         </p>
                     </div>
                 </div>
-            </Card>
+            </PrimaryLayout>
         </Fragment>
     )
 }

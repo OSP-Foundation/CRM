@@ -1,4 +1,4 @@
-import { Authlayout, Inputbox } from "../../../components/auth";
+import { Authlayout, Input } from "../../../components/auth";
 import { Google } from "../../../assets/svg/auth";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -114,7 +114,7 @@ const SignUp = () => {
       onSubmit={FormHandle}
       error={conditions?.error}
     >
-      <Inputbox
+      <Input
         label={"Name"}
         type={"text"}
         name={"name"}
@@ -122,7 +122,7 @@ const SignUp = () => {
         onChange={InputHandle}
         required
       />
-      <Inputbox
+      <Input
         label={"Email"}
         type={"email"}
         name={"email"}
@@ -130,7 +130,7 @@ const SignUp = () => {
         onChange={InputHandle}
         required
       />
-      <Inputbox
+      <Input
         label={"Password"}
         type={"password"}
         name={"password"}
@@ -141,7 +141,7 @@ const SignUp = () => {
 
       {
         conditions?.otp && (<div className="flex flex-col gap-2 w-full">
-          <Inputbox
+          <Input
             label={"Verification code"}
             type={"text"}
             name={"OTP"}

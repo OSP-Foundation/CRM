@@ -7,6 +7,7 @@ import {
 } from '../../assets/svg'
 import { axios } from '../../lib'
 import { useSelector } from 'react-redux'
+import Button from './button'
 import './style.scss'
 
 const SideBar = () => {
@@ -127,143 +128,139 @@ const SideBar = () => {
                 ref={ref}
             >
                 <div className="items">
-                    <div className="flex flex-row gap-2 items-center mb-3">
+                    <div className="flex flex-row gap-[1px] items-center mb-3">
                         <div
                             className='border-[5px] border-primary-blue w-6 h-6 rounded-full'
-                        >
-
-                        </div>
+                        />
                         <h1 className='text-2xl font-black text-primary-blue'>
-                            CR<span className='text-primary-black'>M</span>
+                            SP&nbsp;CR<span className='text-primary-black'>M</span>
                         </h1>
                     </div>
 
-                    <button
-                        className='active text-sm'
-                        onClick={() => navigate('/')}
-                    >
-                        <Meter
+                    <Button
+                        Svg={<Meter
                             width='1rem'
                             height='1rem'
                             className='svg-fill'
-                        />
+                        />}
+                        content='dashboard'
+                        href='/'
+                        active
+                    />
 
-                        dashboard
-                    </button>
-
-                    <button
-                        className='text-sm'
-                        onClick={() => navigate('/customer')}
-                    >
-                        <HeadPhone
+                    <Button
+                        Svg={<HeadPhone
                             width='1rem'
                             height='1rem'
                             classChild='svg-stroke'
-                        />
+                        />}
+                        content='customer'
+                        href='/customer'
+                    />
 
-                        customer
-                    </button>
-
-                    <button
-                        className='text-sm'
-                        onClick={() => navigate('/people')}
-                    >
-                        <User
+                    <Button
+                        Svg={<User
                             width='1rem'
                             height='1rem'
                             className='svg-fill'
-                        />
+                        />}
+                        content='people'
+                        href='/people'
+                    />
 
-                        people
-                    </button>
-
-                    <button
-                        className='text-sm'
-                        onClick={() => navigate('/company')}
-                    >
-                        <Store
+                    <Button
+                        Svg={<Store
                             width='1rem'
                             height='1rem'
                             className='svg-fill'
-                        />
+                        />}
+                        content='company'
+                        href='/company'
+                    />
 
-                        company
-                    </button>
-
-                    <button
-                        className='text-sm'
-                        onClick={() => navigate('/lead')}
-                    >
-                        <Graph
+                    <Button
+                        Svg={<Graph
                             width='1rem'
                             height='1rem'
                             className='svg-fill'
-                        />
+                        />}
+                        content='lead'
+                        href='/lead'
+                    />
 
-                        lead
-                    </button>
-
-                    <button
-                        className='text-sm'
-                        onClick={() => navigate('/quote')}
-                    >
-                        <Quote
+                    <Button
+                        Svg={<Quote
                             width='1rem'
                             height='1rem'
                             className='svg-fill'
-                        />
+                        />}
+                        content='quote'
+                        href='/quote'
+                    />
 
-                        quote
-                    </button>
-
-                    <button
-                        className='text-sm'
-                        onClick={() => navigate('/invoice')}
-                    >
-                        <Doc
+                    <Button
+                        Svg={<Doc
                             width='1rem'
                             height='1rem'
                             className='svg-fill'
-                        />
+                        />}
+                        content='invoice'
+                        href='/invoice'
+                    />
 
-                        invoice
-                    </button>
-
-                    <button
-                        className='text-sm'
-                    >
-                        <Expense
+                    <Button
+                        id='expense'
+                        Svg={<Expense
                             width='1rem'
                             height='1rem'
                             className='svg-stroke'
-                        />
-
-                        expense
-                    </button>
-
-                    <button
-                        className='text-sm'
+                        />}
+                        content='expense'
                     >
-                        <Payment
+                        <button>
+                            expense category
+                        </button>
+                        <button>
+                            expense
+                        </button>
+                    </Button>
+
+                    <Button
+                        id='payment'
+                        Svg={<Payment
                             width='1rem'
                             height='1rem'
                             classChild='svg-stroke'
-                        />
-
-                        payment
-                    </button>
-
-                    <button
-                        className='text-sm'
+                        />}
+                        content='payment'
                     >
-                        <Settings
+                        <button
+                            onClick={() => console.log("hai")}
+                        >
+                            payment types
+                        </button>
+                        <button>
+                            payments
+                        </button>
+                    </Button>
+
+                    <Button
+                        id='settings'
+                        Svg={<Settings
                             width='1rem'
                             height='1rem'
                             className='svg-fill'
-                        />
-
-                        settings
-                    </button>
+                        />}
+                        active
+                        content='settings'
+                    >
+                        <button>
+                            company
+                        </button>
+                        <button>
+                            currency
+                        </button>
+                    </Button>
                 </div>
 
                 <div

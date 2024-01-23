@@ -3,11 +3,9 @@ import { FixedForm } from '../../../components/forms'
 
 const CreateInvoice = () => {
     return (
-        <div>
-            <Card className='container'>
-                <FixedForm />
-            </Card>
-        </div>
+        <Card className='container'>
+            <FixedForm />
+        </Card>
     )
 }
 

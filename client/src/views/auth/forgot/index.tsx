@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Authlayout, Inputbox } from "../../../components/auth";
+import { Authlayout, Input } from "../../../components/auth";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { axios } from "../../../lib";
 
@@ -77,7 +77,7 @@ const Forgot = () => {
       error={conditions?.error}
       onSubmit={FormHandle}
     >
-      <Inputbox
+      <Input
         label={"Email"}
         type={"email"}
         name={"email"}
@@ -89,7 +89,7 @@ const Forgot = () => {
       {
         conditions?.otp && (
           <>
-            <Inputbox
+            <Input
               label={"New Password"}
               type={"password"}
               name={"password"}
@@ -98,7 +98,7 @@ const Forgot = () => {
               onChange={InputHandle}
             />
             <div className="flex flex-col gap-2 w-full">
-              <Inputbox
+              <Input
                 label={"Verification code"}
                 type={"text"}
                 name={"OTP"}

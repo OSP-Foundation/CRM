@@ -1,33 +1,39 @@
+import { useNavigate } from 'react-router-dom'
 import { Input, Select } from '../..'
-import { Trash } from '../../../assets/svg'
+import { ArrowLeft, Trash } from '../../../assets/svg'
+import { BlueBtn, WhiteBtn } from '../../buttons';
 
 const FixedForm = () => {
+  const navigate = useNavigate();
+
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex flex-wrap items-center gap-3'>
         <button
-          className='mr-auto capitalize text-[50px] text-primary-black text-left ease-in-out duration-500 hover:text-primary-blue'
+          className='group mr-auto'
+          onClick={() => navigate(-1)}
         >
-          &#x2190;
+          <ArrowLeft
+            width='1.5rem'
+            height='1.5rem'
+            className='pointer-events-none'
+            classChild='ease-in-out duration-500 fill-primary-black group-hover:fill-primary-blue'
+          />
         </button>
 
-        <button
-          className='bg-white border border-primary-border rounded-md px-3 py-1 text-sm capitalize text-primary-black ease-in-out duration-500 hover:bg-primary-border'
-        >
+        <WhiteBtn>
           <span
             className='text-xs pr-1'
           >
             &#10005;
           </span>
           cancel
-        </button>
+        </WhiteBtn>
 
-        <button
-          className='font-semibold border border-primary-blue bg-primary-blue rounded-md text-white px-3 py-1 text-sm capitalize ease-in-out duration-500 hover:bg-secondary-blue hover:border-secondary-blue'
-        >
+        <BlueBtn>
           <span className='pr-1'>&#43;</span>
           save
-        </button>
+        </BlueBtn>
       </div>
 
       <div className="w-full border-t border-dashed border-primary-border" />
@@ -206,12 +212,12 @@ const FixedForm = () => {
 
       <div className="flex flex-col-reverse md:flex-row gap-4">
         <div className='mr-auto'>
-          <button
-            className='font-semibold border border-primary-blue bg-primary-blue rounded-md text-white px-7 py-1 text-sm capitalize ease-in-out duration-500 hover:bg-secondary-blue hover:border-secondary-blue'
+          <BlueBtn
+            className='px-8'
           >
             <span className='pr-1'>&#43;</span>
             save
-          </button>
+          </BlueBtn>
         </div>
 
         <div className="flex flex-col gap-2">

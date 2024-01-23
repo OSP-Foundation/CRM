@@ -1,8 +1,8 @@
-import { FormEvent, useRef } from 'react'
-import { ActionsArea, Card, Drawer, Input, Select, drawerRef } from '../../components'
+import { FormEvent, Fragment, useRef } from 'react'
+import { Drawer, PrimaryLayout, Select, drawerRef } from '../../components'
 import { Table, Td, TdMenu } from '../../components/table'
 import { SimpleForm } from '../../components/forms'
-import { BlueBtn, WhiteBtn } from '../../components/buttons'
+import { BlueBtn } from '../../components/buttons'
 
 const Customer = () => {
   const ref = useRef<drawerRef>(null)
@@ -14,7 +14,7 @@ const Customer = () => {
   }
 
   return (
-    <div className='flex flex-col gap-7'>
+    <Fragment>
       <Drawer
         ref={ref}
       >
@@ -56,41 +56,14 @@ const Customer = () => {
         </SimpleForm>
       </Drawer>
 
-      <Card className='container md:py-[1rem] flex flex-wrap gap-3 items-center'>
-        <Input
-          name='search'
-          type="text"
-          placeholder='Search'
-          className='mr-auto'
-        />
-
-        <select
-          className='capitalize appearance-none text-sm text-primary-black bg-white border border-primary-border rounded-md px-3 py-1 ease-in-out duration-500 hover:bg-primary-border'
-        >
-          <option
-            className='capitalize text-sm text-primary-black'
-            value="recent">
-            recent
-          </option>
-        </select>
-
-        <WhiteBtn
+      <PrimaryLayout
+        Actions={<BlueBtn
           type='button'
+          onClick={() => ref?.current?.open?.()}
         >
-          refresh
-        </WhiteBtn>
-      </Card>
-
-      <Card className='container flex flex-col gap-4'>
-        <ActionsArea>
-          <BlueBtn
-            type='button'
-            onClick={() => ref?.current?.open?.()}
-          >
-            add new customer
-          </BlueBtn>
-        </ActionsArea>
-
+          add new customer
+        </BlueBtn>}
+      >
         <Table
           titles={['type', 'name', 'country', 'phone', 'email', '']}
         >
@@ -213,8 +186,8 @@ const Customer = () => {
           <button className='px-3 p-1 text-sm text-primary-black bg-white rounded-md font-medium ease-in-out duration-500 border border-white hover:bg-primary-border hover:border-primary-border'>2</button>
           <button className='px-3 p-1 text-sm text-primary-black bg-white rounded-md font-medium ease-in-out duration-500 border border-white hover:bg-primary-border hover:border-primary-border'>3</button>
         </div>
-      </Card>
-    </div>
+      </PrimaryLayout>
+    </Fragment>
   )
 }
 

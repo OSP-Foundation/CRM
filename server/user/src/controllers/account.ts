@@ -488,8 +488,7 @@ class Account {
     async updatePassword(req: Request, res: Response) {
         const userId: string = typeof req?.query?.userId == 'string' ? req?.query?.userId : ''
 
-        if (req?.body?.password?.length >= 8 &&
-            req?.body?.newPassword?.length >= 8) {
+        if (req?.body?.newPassword?.length >= 8) {
             try {
                 const existing = await this.repo.getUser(userId);
 
@@ -526,7 +525,7 @@ class Account {
         } else {
             res.status(422).json({
                 status: 422,
-                message: 'Password Should Minimum 8 Length',
+                message: 'New Password Should Minimum 8 Length',
             });
         }
     }
@@ -536,43 +535,36 @@ class Account {
 
         const { password, ...details } = req?.body
 
-        if (password?.length >= 8) {
-            try {
-                const existing = await this.repo.getUser(userId);
+        try {
+            const existing = await this.repo.getUser(userId);
 
-                const match = await bcrypt.compare(password, existing?.password)
+            const match = await bcrypt.compare(password, existing?.password)
 
-                if (match) {
-                    await this.repo.updateDetails({
-                        _id: existing?._id,
-                        ...details
-                    })
+            if (match) {
+                await this.repo.updateDetails({
+                    _id: existing?._id,
+                    ...details
+                })
 
-                    res?.status(200).json({
-                        status: 200,
-                        message: "Success"
-                    })
-                } else {
-                    res.status(422).json({
-                        status: 422,
-                        message: "Please Enter Correct Password",
-                    })
-                }
-            } catch (err: any) {
-                if (err?.status) {
-                    res.status(err.status).json(err);
-                } else {
-                    res.status(500).json({
-                        status: 500,
-                        message: err,
-                    });
-                }
+                res?.status(200).json({
+                    status: 200,
+                    message: "Success"
+                })
+            } else {
+                res.status(422).json({
+                    status: 422,
+                    message: "Please Enter Correct Password",
+                })
             }
-        } else {
-            res.status(422).json({
-                status: 422,
-                message: 'Password Should Minimum 8 Length',
-            });
+        } catch (err: any) {
+            if (err?.status) {
+                res.status(err.status).json(err);
+            } else {
+                res.status(500).json({
+                    status: 500,
+                    message: err,
+                });
+            }
         }
     }
 }

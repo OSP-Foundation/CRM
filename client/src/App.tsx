@@ -2,8 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "./utils";
 import { Customer, Home } from "./views";
 import { Forgot, SignIn, SignUp } from "./views/auth";
-import { Account } from "./views/account";
+import { Account, EditAccount } from "./views/account";
 import { CreateInvoice } from "./views/invoice";
+import { CompanySettings, CurrencySettings } from "./views/settings";
 
 const App = () => {
   return (
@@ -13,6 +14,10 @@ const App = () => {
         <Route path="/customer" element={<Customer />} />
         <Route path="/invoice/create" element={<CreateInvoice />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/account/edit" element={<EditAccount />} />
+
+        <Route path="/settings/company" element={<CompanySettings />} />
+        <Route path="/settings/currency" element={<CurrencySettings />} />
       </Route>
 
       <Route element={<ProtectedRoute />}>

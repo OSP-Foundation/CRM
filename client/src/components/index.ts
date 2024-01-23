@@ -4,7 +4,7 @@ export { default as Input } from './input'
 export { default as Select } from './select'
 export { default as Drawer } from './drawer'
 export { default as Modal } from './modal'
-export { default as ActionsArea } from './actions-area'
+export { default as PrimaryLayout } from './layout'
 
 // types
 export type { drawerRef } from './drawer'
