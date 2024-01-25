@@ -22,7 +22,7 @@ const PrimaryLayout = ({ children, Actions, isFixedActions = true, cardClass }: 
                         name='search'
                         type="text"
                         placeholder='Search'
-                        className='mr-auto'
+                        container='mr-auto'
                     />
 
                     <select

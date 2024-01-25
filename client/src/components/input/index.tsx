@@ -1,8 +1,9 @@
-import { ChangeEvent, Fragment, useMemo } from "react";
+import { ChangeEvent, useMemo } from "react";
 import './style.scss'
 
 interface props {
     className?: string;
+    container?: string;
     label?: string;
     value?: any;
     type: "text" | "number" | "checkbox" | "radio" | "email" | "password" | "date" | "file";
@@ -13,7 +14,7 @@ interface props {
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ className, label, ...other }: props) => {
+const Input = ({ className, container, label, ...other }: props) => {
     const height = useMemo((): string => {
         const regex = /(?<!\w|-)\bh-(full|\d+)\b/;
 
@@ -25,7 +26,7 @@ const Input = ({ className, label, ...other }: props) => {
     }, [className])
 
     return (
-        <Fragment>
+        <div className={`flex flex-col ${container}`}>
             {
                 label && (<label className="text-sm text-primary-black font-semibold capitalize">
                     {other?.required && <span className='pr-1 text-red-500'>*</span>}{label}
@@ -36,7 +37,7 @@ const Input = ({ className, label, ...other }: props) => {
                 className={`border border-primary-border bg-white text-sm text-primary-black rounded-md py-1 px-3 ease-in-out duration-500 focus:border-primary-blue ${className} ${height}`}
                 {...other}
             />
-        </Fragment>
+        </div>
     )
 }
 

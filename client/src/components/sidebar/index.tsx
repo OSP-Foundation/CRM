@@ -234,10 +234,13 @@ const SideBar = () => {
                         />}
                         content='payment'
                     >
+                        <button>
+                            tax
+                        </button>
                         <button
                             onClick={() => console.log("hai")}
                         >
-                            payment types
+                            payment mode
                         </button>
                         <button>
                             payments
@@ -254,10 +257,14 @@ const SideBar = () => {
                         active
                         content='settings'
                     >
-                        <button>
+                        <button
+                            onClick={() => navigate('/settings/company')}
+                        >
                             company
                         </button>
-                        <button>
+                        <button
+                            onClick={() => navigate('/settings/currency')}
+                        >
                             currency
                         </button>
                     </Button>

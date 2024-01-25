@@ -6,7 +6,7 @@ import CheckLogged from './middleware/checklogged';
 
 import "dotenv/config"
 
-const port = 5003
+const port = 5005
 
 // connecting to MongoDB
 configMongo?.()

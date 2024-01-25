@@ -18,7 +18,7 @@ COPY ./ ./
 # building files
 RUN npm run build
 
-EXPOSE 5003
+EXPOSE 5004
 
 # executing command
 CMD [ "npm","start" ]

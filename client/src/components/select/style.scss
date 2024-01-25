@@ -11,6 +11,12 @@
 }
 
 div#custom-select {
+    &:is(.capitalize) {
+        input {
+            text-transform: capitalize;
+        }
+    }
+
     input:focus~div.arrow {
         transform: rotate(180deg);
     }

@@ -20,6 +20,11 @@ export default ({ mode }) => {
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api\/user/, ''),
         },
+        '/api/settings': {
+          target: process?.env?.BACK_END_SETTINGS,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api\/settings/, ''),
+        },
       }
     }
   })

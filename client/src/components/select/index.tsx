@@ -1,8 +1,9 @@
-import React, { Fragment, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import './style.scss'
 
 interface props {
     className?: string; // className for add extra styles
+    container?: string; // className for div
     label?: string; // if label need to show label name
     value?: string | number;
     placeholder: string;
@@ -13,7 +14,7 @@ interface props {
     children?: React.ReactNode
 }
 
-const Select = ({ className,
+const Select = ({ className, container,
     children,
     onSelect,
     onInput, label, ...other
@@ -50,7 +51,7 @@ const Select = ({ className,
     }, [className])
 
     return (
-        <Fragment>
+        <div className={`flex flex-col ${container}`}>
             {
                 label && (<label className="text-sm text-primary-black font-semibold capitalize">
                     {other?.required && <span className='pr-1 text-red-500'>*</span>}{label}
@@ -62,7 +63,7 @@ const Select = ({ className,
                 className={`relative flex flex-row items-center gap-2 border border-primary-border bg-white text-sm text-primary-black rounded-md py-1 px-3 ease-in-out duration-500 focus-within:border-primary-blue ${className} ${height}`}
             >
                 <input
-                    className='bg-transparent mr-auto w-full h-auto'
+                    className={`bg-transparent mr-auto w-full h-auto`}
                     onChange={(e) => onInput?.(e)}
                     readOnly={onInput ? false : true}
                     {...other}
@@ -74,7 +75,7 @@ const Select = ({ className,
                     {options}
                 </div>
             </div>
-        </Fragment>
+        </div>
     )
 }
 

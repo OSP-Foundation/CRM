@@ -21,38 +21,36 @@ const Customer = () => {
         <SimpleForm
           onSubmit={onSubmit}
         >
-          <div>
-            <Select
-              className='w-full'
-              label='Type'
-              placeholder='Select Type'
-              type='text'
-              required
-            >
-              <option value="People">People</option>
-              <option value="Company">Company</option>
-            </Select>
-          </div>
+          <Select
+            container='w-full'
+            className='w-full'
+            label='Type'
+            placeholder='Select Type'
+            type='text'
+            required
+          >
+            <option value="People">People</option>
+            <option value="Company">Company</option>
+          </Select>
 
-          <div>
-            <Select
-              className='w-full'
-              label='People'
-              placeholder='Search Here'
-              type='text'
-              required
-              onInput={(e) => {
+          <Select
+            container='w-full'
+            className='w-full'
+            label='People'
+            placeholder='Search Here'
+            type='text'
+            required
+            onInput={(e) => {
 
-              }}
-              onSelect={(v) => {
-                console.log(v?.target?.value)
-                console.log(v?.target?.text)
-                // setState(v?.view)
-              }}
-            >
-              <option value="hello">Hai</option>
-            </Select>
-          </div>
+            }}
+            onSelect={(v) => {
+              console.log(v?.target?.value)
+              console.log(v?.target?.text)
+              // setState(v?.view)
+            }}
+          >
+            <option value="hello">Hai</option>
+          </Select>
         </SimpleForm>
       </Drawer>
 

@@ -4,7 +4,7 @@
 FROM node:20.10.0-alpine 
 
 # Sets the current working directory for subsequent instructions.
-WORKDIR /dev/settings
+WORKDIR /dev/payment
 
 # copying package.json & package-lock.json to WORKDIR
 COPY package*.json ./
@@ -15,7 +15,7 @@ RUN npm install
 # copy local files to working directory
 COPY ./ ./
 
-EXPOSE 5004
+EXPOSE 5005
 
 # executing command
 CMD [ "npm","run","dev" ]

@@ -15,7 +15,7 @@ RUN npm install
 # copy local files to working directory
 COPY ./ ./
 
-EXPOSE 5001
+EXPOSE 5003
 
 # executing command
 CMD [ "npm","run","dev" ]
