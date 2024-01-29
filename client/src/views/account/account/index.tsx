@@ -41,20 +41,22 @@ const Account = () => {
     const FormHandle = async (e: FormEvent<HTMLFormElement>) => {
         e?.preventDefault?.()
 
-        setConditions({ submiting: true })
+        if (!conditions?.submiting) {
+            setConditions({ submiting: true })
 
-        try {
-            await axios.put('/user/update-password', form)
+            try {
+                await axios.put('/user/update-password', form)
 
-            alert("Success")
+                alert("Success")
 
-            setForm({ password: '', newPassword: '' })
+                setForm({ password: '', newPassword: '' })
 
-            ref?.current?.close?.()
-        } catch (err: any) {
-            setConditions((state) => ({ ...state, error: err?.response?.data?.message || "Something Went Wrong" }))
-        } finally {
-            setConditions((state) => ({ ...state, submiting: false }))
+                ref?.current?.close?.()
+            } catch (err: any) {
+                setConditions((state) => ({ ...state, error: err?.response?.data?.message || "Something Went Wrong" }))
+            } finally {
+                setConditions((state) => ({ ...state, submiting: false }))
+            }
         }
     }
 
@@ -91,7 +93,6 @@ const Account = () => {
 
             <PrimaryLayout
                 cardClass='max-w-xl mx-auto'
-                isFixedActions={false}
                 Actions={
                     <>
                         <BlueBtn

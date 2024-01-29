@@ -41,32 +41,34 @@ const Forgot = () => {
   const FormHandle = async (e?: FormEvent<HTMLFormElement>, resend?: boolean) => {
     e?.preventDefault?.()
 
-    setConditions((state) => ({
-      ...state,
-      submiting: true,
-      error: undefined
-    }))
+    if (!conditions?.submiting) {
+      setConditions((state) => ({
+        ...state,
+        submiting: true,
+        error: undefined
+      }))
 
-    try {
-      if (!resend && conditions?.otp) {
-        const res = await axios.post('/user/forgot-verify', form)
+      try {
+        if (!resend && conditions?.otp) {
+          const res = await axios.post('/user/forgot-verify', form)
 
-        if (res?.['data']) navigate('/sign-in')
-      } else {
-        const res = await axios.post('/user/forgot-request', form)
+          if (res?.['data']) navigate('/sign-in')
+        } else {
+          const res = await axios.post('/user/forgot-request', form)
 
-        if (res?.['data']) setConditions((state) => ({ ...state, otp: true }))
+          if (res?.['data']) setConditions((state) => ({ ...state, otp: true }))
+        }
+      } catch (err: any) {
+        setConditions((state) => ({
+          ...state,
+          error: err?.response?.data?.message || "Something Went Wrong"
+        }))
+      } finally {
+        setConditions((state) => ({
+          ...state,
+          submiting: false
+        }))
       }
-    } catch (err: any) {
-      setConditions((state) => ({
-        ...state,
-        error: err?.response?.data?.message || "Something Went Wrong"
-      }))
-    } finally {
-      setConditions((state) => ({
-        ...state,
-        submiting: false
-      }))
     }
   }
 

@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "./utils";
-import { Customer, Home } from "./views";
+import { Company, Customer, Home, People } from "./views";
 import { Forgot, SignIn, SignUp } from "./views/auth";
 import { Account, EditAccount } from "./views/account";
 import { CreateInvoice } from "./views/invoice";
@@ -11,8 +11,13 @@ const App = () => {
     <Routes>
       <Route element={<ProtectedRoute isAuth />}>
         <Route path="/" element={<Home />} />
+
         <Route path="/customer" element={<Customer />} />
+        <Route path="/people" element={<People />} />
+        <Route path="/company" element={<Company />} />
+
         <Route path="/invoice/create" element={<CreateInvoice />} />
+
         <Route path="/account" element={<Account />} />
         <Route path="/account/edit" element={<EditAccount />} />
 

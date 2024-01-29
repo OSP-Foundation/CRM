@@ -7,7 +7,7 @@ const port = 5002
 
 const app = expresss()
 
-app.use(cors({ credentials: true, origin: "*" }))
+app.use(cors({ credentials: true, origin: process?.env?.ORIGIN }))
 
 app.use(expresss.json({ limit: "50mb" }))
 

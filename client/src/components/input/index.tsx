@@ -14,7 +14,7 @@ interface props {
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ className, container, label, ...other }: props) => {
+const Input = ({ className, container, label, value, onChange, ...other }: props) => {
     const height = useMemo((): string => {
         const regex = /(?<!\w|-)\bh-(full|\d+)\b/;
 
@@ -35,6 +35,8 @@ const Input = ({ className, container, label, ...other }: props) => {
             <input
                 id="custom-input"
                 className={`border border-primary-border bg-white text-sm text-primary-black rounded-md py-1 px-3 ease-in-out duration-500 focus:border-primary-blue ${className} ${height}`}
+                value={value ? value : ''}
+                onChange={(e) => onChange?.(e)}
                 {...other}
             />
         </div>

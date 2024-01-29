@@ -39,25 +39,26 @@ const EditAccount = () => {
     const formHandle = async (e: FormEvent<HTMLFormElement>) => {
         e?.preventDefault?.()
 
-        setConditions({ submiting: true })
+        if (!conditions?.submiting) {
+            setConditions({ submiting: true })
 
-        try {
-            await axios.put('/user/update-details', form)
+            try {
+                await axios.put('/user/update-details', form)
 
-            alert("Success")
+                alert("Success")
 
-            navigate('/account')
-        } catch (err: any) {
-            setConditions((state) => ({ ...state, error: err?.response?.data?.message || "Something Went Wrong" }))
-        } finally {
-            setConditions((state) => ({ ...state, submiting: false }))
+                navigate('/account')
+            } catch (err: any) {
+                setConditions((state) => ({ ...state, error: err?.response?.data?.message || "Something Went Wrong" }))
+            } finally {
+                setConditions((state) => ({ ...state, submiting: false }))
+            }
         }
     }
 
     return (
         <PrimaryLayout
             cardClass='max-w-xl mx-auto'
-            isFixedActions={false}
         >
             <SimpleForm
                 onSubmit={formHandle}

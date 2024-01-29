@@ -25,6 +25,11 @@ export default ({ mode }) => {
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api\/settings/, ''),
         },
+        '/api/customers': {
+          target: process?.env?.BACK_END_CUSTOMERS,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api\/customers/, ''),
+        },
       }
     }
   })

@@ -14,7 +14,7 @@ configMongo?.()
 
 const app = expresss()
 
-app.use(cors({ credentials: true, origin: "*" }))
+app.use(cors({ credentials: true, origin: process?.env?.ORIGIN }))
 
 app.use(cookieParser())
 

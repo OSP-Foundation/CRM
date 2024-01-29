@@ -6,7 +6,8 @@ interface props {
 }
 
 export interface drawerRef {
-    open(): void
+    open(): void,
+    close(): void
 }
 
 const Drawer = forwardRef(({ children }: props, ref) => {
@@ -16,7 +17,7 @@ const Drawer = forwardRef(({ children }: props, ref) => {
     const interval = useRef<NodeJS.Timeout | null>(null)
 
     // for closing modal
-    const CloseModal = () => {
+    const close = () => {
         modal?.current?.classList?.add("hide")
 
         if (interval?.current) {
@@ -36,16 +37,17 @@ const Drawer = forwardRef(({ children }: props, ref) => {
             }
 
             modal?.current?.classList?.add("active")
-        }
+        },
+        close
     }), [])
 
     return (
         <div id='drawer' ref={modal}>
-            <div id="blur-area" onClick={CloseModal} />
+            <div id="blur-area" onClick={close} />
             <div id="content">
                 <div className='border-b border-primary-border flex items-center px-[1.5rem] py-[1rem]'>
                     <button
-                        onClick={CloseModal}
+                        onClick={close}
                         className='mr-auto text-secondary-black text-lg font-black ease-in-out duration-500 hover:text-red-500'
                     >
                         &#10005;

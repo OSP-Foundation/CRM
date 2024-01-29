@@ -54,28 +54,30 @@ const SignIn = () => {
   const FormHandle = async (e: FormEvent<HTMLFormElement>) => {
     e?.preventDefault?.()
 
-    setConditions((state) => ({
-      ...state,
-      submiting: true,
-      error: undefined
-    }))
-
-    try {
-      const res = await axios.get('/user/login-manual', {
-        params: form
-      })
-
-      if (res?.['data']) { navigate('/') }
-    } catch (err: any) {
+    if (!conditions?.submiting) {
       setConditions((state) => ({
         ...state,
-        error: err?.response?.data?.message || "Something Went Wrong"
+        submiting: true,
+        error: undefined
       }))
-    } finally {
-      setConditions((state) => ({
-        ...state,
-        submiting: false
-      }))
+
+      try {
+        const res = await axios.get('/user/login-manual', {
+          params: form
+        })
+
+        if (res?.['data']) { navigate('/') }
+      } catch (err: any) {
+        setConditions((state) => ({
+          ...state,
+          error: err?.response?.data?.message || "Something Went Wrong"
+        }))
+      } finally {
+        setConditions((state) => ({
+          ...state,
+          submiting: false
+        }))
+      }
     }
   }
 

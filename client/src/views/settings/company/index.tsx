@@ -30,20 +30,22 @@ const CompanySettings = () => {
     const FormHandle = async (e: FormEvent<HTMLFormElement>) => {
         e?.preventDefault?.()
 
-        setConditions({ submiting: true })
+        if (!conditions?.submiting) {
+            setConditions({ submiting: true })
 
-        try {
-            await axios.put('/settings/company/update', form)
+            try {
+                await axios.put('/settings/company/update', form)
 
-            alert("Success")
+                alert("Success")
 
-            setConditions({})
-        } catch (err: any) {
-            setConditions((state) => ({
-                ...state,
-                error: err?.response?.data?.message || "Something Went Wrong",
-                submiting: false
-            }))
+                setConditions({})
+            } catch (err: any) {
+                setConditions((state) => ({
+                    ...state,
+                    error: err?.response?.data?.message || "Something Went Wrong",
+                    submiting: false
+                }))
+            }
         }
     }
 
@@ -72,7 +74,6 @@ const CompanySettings = () => {
     return (
         <PrimaryLayout
             cardClass='max-w-xl mx-auto'
-            isFixedActions={false}
             Actions={
                 <h1 className='text-lg text-primary-black font-bold capitalize'>company Settings</h1>
             }
