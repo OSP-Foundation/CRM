@@ -62,9 +62,47 @@ class PeopleService {
                 const res = await this.people.find({
                     ...query,
                     user: new mongoose.Types.ObjectId(user)
-                }).sort({ _id: -1 }).skip(skip).limit(limit);
+                }).sort({ _id: -1 }).skip(skip).limit(limit).populate("company").select("-user");
 
                 resolve(res)
+            } catch (err: any) {
+                reject(err?._message)
+            }
+        })
+    }
+
+    updateOne({ _id, user }: { _id: string, user: string }, details: people) {
+        return new Promise<void>(async (resolve, reject) => {
+            try {
+                await this.people.updateOne({
+                    _id: new mongoose.Types.ObjectId(_id),
+                    user: new mongoose.Types.ObjectId(user),
+                }, {
+                    $set: {
+                        name: details?.name,
+                        country: details?.country,
+                        phone: details?.phone,
+                        email: details?.email,
+                        company: typeof details?.company == 'string' ? new mongoose.Types.ObjectId(details?.company) : details?.company ? details?.company : null
+                    }
+                })
+
+                resolve()
+            } catch (err: any) {
+                reject(err?._message)
+            }
+        })
+    }
+
+    deleteOne({ _id, user }: { _id: string, user: string }) {
+        return new Promise<void>(async (resolve, reject) => {
+            try {
+                await this.people.deleteOne({
+                    _id: new mongoose.Types.ObjectId(_id),
+                    user: new mongoose.Types.ObjectId(user),
+                })
+
+                resolve()
             } catch (err: any) {
                 reject(err?._message)
             }

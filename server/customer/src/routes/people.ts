@@ -5,8 +5,12 @@ const people = new People();
 
 const router = Router()
 
-router.post("/insert", people?.insert?.bind(people))
+router.post("/", people?.insert?.bind(people))
 
-router.get("/all", people?.getAll?.bind(people))
+router.put("/", people?.update?.bind(people))
+
+router.delete("/", people?.delete?.bind(people))
+
+router.get("/", people?.getAll?.bind(people))
 
 export default router;

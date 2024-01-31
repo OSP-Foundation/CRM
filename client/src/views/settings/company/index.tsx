@@ -34,7 +34,7 @@ const CompanySettings = () => {
             setConditions({ submiting: true })
 
             try {
-                await axios.put('/settings/company/update', form)
+                await axios.put('/settings/company/', form)
 
                 alert("Success")
 
@@ -54,7 +54,7 @@ const CompanySettings = () => {
 
         (async () => {
             try {
-                const res = await axios.get('/settings/company/get', {
+                const res = await axios.get('/settings/company/', {
                     signal: abortControll?.signal
                 })
 

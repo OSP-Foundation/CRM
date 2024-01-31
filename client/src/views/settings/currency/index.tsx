@@ -31,7 +31,7 @@ const CurrencySettings = () => {
             setConditions({ submiting: true })
 
             try {
-                await axios.put('/settings/currency/update', form)
+                await axios.put('/settings/currency/', form)
 
                 alert("Success")
 
@@ -51,7 +51,7 @@ const CurrencySettings = () => {
 
         (async () => {
             try {
-                const res = await axios.get('/settings/currency/get', {
+                const res = await axios.get('/settings/currency/', {
                     signal: abortControll?.signal
                 })
 

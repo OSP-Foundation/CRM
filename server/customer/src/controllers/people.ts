@@ -60,6 +60,50 @@ class People {
             })
         }
     }
+
+    async update(req: Request, res: Response) {
+        const user = typeof req?.query?.userId == 'string' ? req?.query?.userId : ''
+
+        const { _id, ...details } = req?.body
+
+        try {
+            await this.repo.updateOne({
+                user,
+                _id
+            }, details)
+
+            res?.status(200).json({
+                status: 200,
+                message: "Success"
+            })
+        } catch (err) {
+            res?.status(500).json({
+                status: 500,
+                message: err
+            })
+        }
+    }
+
+    async delete(req: Request, res: Response) {
+        const user = typeof req?.query?.userId == 'string' ? req?.query?.userId : ''
+
+        try {
+            await this.repo.deleteOne({
+                user,
+                _id: req?.body?._id
+            })
+
+            res?.status(200).json({
+                status: 200,
+                message: "Success"
+            })
+        } catch (err) {
+            res?.status(500).json({
+                status: 500,
+                message: err
+            })
+        }
+    }
 }
 
 export default People;

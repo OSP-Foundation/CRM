@@ -17,7 +17,7 @@ interface props {
 const Select = ({ className, container,
     children,
     onSelect,
-    onInput, label, ...other
+    onInput, value, label, ...other
 }: props) => {
     // for checking element is option element or not
     const isOptionElement = (element: any): element is React.ReactElement => {
@@ -66,6 +66,7 @@ const Select = ({ className, container,
                     className={`bg-transparent mr-auto w-full h-auto`}
                     onChange={(e) => onInput?.(e)}
                     readOnly={onInput ? false : true}
+                    value={value ? value : ""}
                     {...other}
                 />
 

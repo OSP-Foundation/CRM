@@ -5,8 +5,8 @@ const currency = new Currency()
 
 const router = Router()
 
-router.put("/update", currency?.update?.bind(currency))
+router.put("/", currency?.update?.bind(currency))
 
-router.get("/get", currency?.get?.bind(currency))
+router.get("/", currency?.get?.bind(currency))
 
 export default router;

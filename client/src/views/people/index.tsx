@@ -13,11 +13,19 @@ const People = () => {
 
   // for abort controller
   const abort = useRef<{
-    getAll?: AbortController
+    getAll?: AbortController,
+    company?: AbortController,
+    delete?: AbortController
+  }>({})
+
+  const [company, setCompany] = useState<{
+    selected?: string,
+    items?: {}[]
   }>({})
 
   // for new person form
   const [form, setForm] = useState<{
+    _id?: string,
     name: string,
     country?: string,
     phone?: string,
@@ -41,36 +49,45 @@ const People = () => {
     activePage?: number
   }>({})
 
-  // to listen input events
-  const InputHandle = (e: ChangeEvent<HTMLInputElement>) => {
-    if (!conditions?.submiting) {
-      setForm((state) => ({
-        ...state,
-        [e?.target?.name]: e?.target?.value
-      }))
+  const openDrawer = (v?: any) => {
+    if (v) {
+      setForm({ ...v, company: v?.company?._id ? v?.company?._id : undefined })
+
+      setCompany({ selected: v?.company?.name ? v?.company?.name : undefined })
+    } else {
+      setForm({ name: '' })
+
+      setCompany({})
     }
+
+    setConditions({})
+
+    ref?.current?.open?.()
   }
 
-  const FormHandle = async (e: FormEvent) => {
-    e?.preventDefault?.()
+  const deleteItem = async (_id: string) => {
+    if (_id && window.confirm("Do you want delete?")) {
+      if (abort?.current?.delete) {
+        abort?.current?.delete?.abort()
+      }
 
-    if (!conditions?.submiting) {
-      setConditions({ submiting: true })
+      abort.current.delete = new AbortController()
 
       try {
-        await axios.post('/customers/people/insert', form)
-
-        alert("Success")
-
-        setForm({ name: '' })
+        await axios.delete("/customers/people", {
+          data: {
+            _id
+          },
+          signal: abort?.current?.delete?.signal
+        })
 
         getItems?.()
 
-        ref?.current?.close?.()
+        alert("Success")
       } catch (err: any) {
-        setConditions((state) => ({ ...state, error: err?.response?.data?.message || "Something Went Wrong" }))
-      } finally {
-        setConditions((state) => ({ ...state, submiting: false }))
+        if (err?.code !== "ERR_CANCELED") {
+          alert(err?.response?.data?.message)
+        }
       }
     }
   }
@@ -83,7 +100,7 @@ const People = () => {
     abort.current.getAll = new AbortController()
 
     try {
-      const res = await axios.get('/customers/people/all', {
+      const res = await axios.get('/customers/people/', {
         signal: abort?.current?.getAll?.signal,
         params: {
           total: true,
@@ -109,6 +126,73 @@ const People = () => {
     } catch (err: any) {
       if (err?.code !== "ERR_CANCELED") {
         alert(err?.response?.data?.message)
+      }
+    }
+  }
+
+  const getCompanies = async (e: ChangeEvent<HTMLInputElement>) => {
+    setCompany((state) => ({ ...state, selected: e?.target?.value, items: [] }));
+
+    setForm((state) => ({ ...state, company: undefined }))
+
+    if (abort?.current?.company) {
+      abort?.current?.company?.abort()
+    }
+
+    abort.current.company = new AbortController()
+
+    try {
+      const res = await axios.get('/customers/company/', {
+        signal: abort?.current?.company?.signal,
+        params: {
+          limit: 20,
+          search: e?.target?.value
+        }
+      })
+
+      setCompany((state) => ({ ...state, items: res?.['data']?.data?.items }))
+
+    } catch (err: any) {
+      if (err?.code !== "ERR_CANCELED") {
+        alert(err?.response?.data?.message)
+      }
+    }
+  }
+
+  // to listen input events
+  const InputHandle = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!conditions?.submiting) {
+      setForm((state) => ({
+        ...state,
+        [e?.target?.name]: e?.target?.value
+      }))
+    }
+  }
+
+  const FormHandle = async (e: FormEvent) => {
+    e?.preventDefault?.()
+
+    if (!conditions?.submiting) {
+      setConditions({ submiting: true })
+
+      try {
+        if (form?._id) {
+          await axios.put('/customers/people/', form)
+        } else {
+          await axios.post('/customers/people/', form)
+        }
+
+        alert("Success")
+
+        setForm({ name: '' })
+
+        getItems?.()
+
+        ref?.current?.close?.()
+      } catch (err: any) {
+        setConditions((state) => ({ ...state, error: err?.response?.data?.message || "Something Went Wrong" }))
+      } finally {
+        setConditions((state) => ({ ...state, submiting: false }))
       }
     }
   }
@@ -177,16 +261,19 @@ const People = () => {
             label='Company'
             placeholder='Search Here'
             type='text'
-            onInput={(e) => {
-
-            }}
+            value={company?.selected}
+            onInput={getCompanies}
             onSelect={(v) => {
-              console.log(v?.target?.value)
-              console.log(v?.target?.text)
-              // setState(v?.view)
+              setCompany((state) => ({ ...state, selected: v?.target?.text }))
+
+              setForm((state) => ({ ...state, company: v?.target?.value }))
             }}
           >
-            <option value="hello">Hai</option>
+            {
+              company?.items?.map((v: any, k: number) => {
+                return <option key={k} value={v?._id}>{v?.name}</option>
+              })
+            }
           </Select>
         </SimpleForm>
       </Drawer>
@@ -194,7 +281,7 @@ const People = () => {
       <PrimaryLayout
         Actions={<BlueBtn
           type='button'
-          onClick={() => ref?.current?.open?.()}
+          onClick={() => openDrawer?.()}
         >
           add new person
         </BlueBtn>}
@@ -213,7 +300,7 @@ const People = () => {
             state?.items?.map((v: any, k: number) => {
               return <tr key={k}>
                 <Td>{v?.name}</Td>
-                <Td>{v?.company}</Td>
+                <Td>{v?.company?.name}</Td>
                 <Td>
                   {
                     v?.country && <button className='border border-primary-bg bg-primary-bg capitalize text-xs text-primary-black rounded-md py-1 px-3 pointer-events-none'>
@@ -227,10 +314,10 @@ const People = () => {
                   <button>
                     show
                   </button>
-                  <button>
+                  <button onClick={() => openDrawer?.(v)}>
                     edit
                   </button>
-                  <button>
+                  <button onClick={() => deleteItem?.(v?._id)}>
                     delete
                   </button>
                 </TdMenu>
